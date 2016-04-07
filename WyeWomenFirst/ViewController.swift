@@ -19,15 +19,8 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     @IBOutlet var tableview: UITableView!
     
     var imageViewObject :UIImageView!
-
-    
-  //  let url = NSURL(string:"http://applehotelbooking.com/webapi/Service1.svc/GetAllUserVideolist/")
-   //   let url = NSURL(string:"http://service.womenwomenfirst.com/Service1.svc/GetAllUserVideolist/")
-     let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/GetAllUserVideolist/")
    
-    
-    
-    
+    let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/GetAllUserVideolist/")
     
     var indicator:UIActivityIndicatorView!
     
@@ -56,64 +49,35 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     var maxCount:Int = 20
     var uploadProgress:Float = 0
     
-    
-    
-    
-    
     override func viewDidLoad() {
         
-        super.viewDidLoad()
+       super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
+       getVideoList()
         
+       currentCount = 0
         
-        getList()
+       setBackGroundView()
         
-        // showview()
-        
-        //gradientColor()
-        
-        currentCount = 0
-        
-        backScreenView()
-        
-        //  progressview.transform = CGAffineTransformScale(progressview.transform, 1, 4)
-        
-        scrollviewAppear()
-        
-        progressBarView()
-
+       scrollviewAppear()
+       
+       progressBarView()
         
        self.tableview.separatorStyle = UITableViewCellSeparatorStyle.None
-        
     }
     
-    
-    
-    
-    func backScreenView()
+    func setBackGroundView()
     {
-        
-       
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         imageViewObject = UIImageView(frame:CGRectMake(0, 0, screenSize.width, screenSize.height));
-        imageViewObject.image = UIImage(named:"splash")
+        imageViewObject.image = UIImage(named:"bic2")
         imageViewObject.opaque = true
         self.view.addSubview(imageViewObject)
-
     }
-    
-    
-    
-    
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
       
-      //cell.layer.shouldRasterize = isScrolling
     }
-    
-    
-    
     
     func scrollviewAppear()
     {
@@ -121,8 +85,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         scrollview.layer.borderColor = UIColor.whiteColor().CGColor
         scrollview.layer.borderWidth = 0.8
     }
-    
-    
     
     func progressBarView()
     {
@@ -163,40 +125,22 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     func showview()
     {
-
-        
-        
-        if(videosimageslider.isEmpty )
-        {
-           // print("Empty Array")
-        }
-        else
-        {
-        
-           // print("Not Empty ")
-            
-           // print(videosimageslider.count)
+       if(videosimageslider.isEmpty )
+       {
+       }
+       else
+       {
             
         for var index=0 ; index<videosimageslider.count ; index++
         {
-            
-            
-            
             if let url = NSURL(string: videosimageslider[index]) {
                 if let data = NSData(contentsOfURL: url){
                     if let imageUrl = UIImage(data: data) {
                         
-                        
                         let  myimageview:UIImageView = UIImageView()
                         
-                       // myimageview.image = imageUrl
-                        
                         let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageUrl: NSURL!) -> Void in
-                            //			println(self)
                         }
-                        
-                        // let url = NSURL(string: "http://yikaobang-test.u.qiniudn.com/FnZTPYbldNXZi7cQ5EJHmKkRDTkj")
-                        
                         
                         myimageview.sd_setImageWithURL(url, completed: block)
                         
@@ -213,37 +157,22 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                         scrollviewcontentSize += imagewidth
                         
                         scrollview.contentSize = CGSize(width: scrollviewcontentSize, height: imageheight)
-                        
-                        
                     }
                 }
-            }
-            
-            
-            
+            }            
         }
-            
-            
        
         scrollingTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "newStartScrolling", userInfo: nil, repeats: true)
-     
-            
         
         scrollingTimer.fire()
         
         }
-        
-        
     }
-    
-    
-    
     
     func newStartScrolling()
     {
         var currentOffset = scrollview.contentOffset
-        currentOffset = CGPointMake(currentOffset.x+2, currentOffset.y )
-        
+        currentOffset = CGPointMake(currentOffset.x+2, currentOffset.y)
         
         if(currentOffset.x < scrollview.contentSize.width - 500)
         {
@@ -271,31 +200,19 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     
     
-    func getList()
+    func getVideoList()
     {
-        
-        
-       // print("welcome in get list")
-        
-        
-        
-      //  let url = NSURL(string:"http://applehotelbooking.com/webapi/Service1.svc/GetAllUserVideolist/")
-        
-      //  let url = NSURL(string:"http://service.womenwomenfirst.com/Service1.svc/GetAllUserVideolist/")
         let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/GetAllUserVideolist/")
         let URLRequest = NSMutableURLRequest(URL: url!)
         URLRequest.cachePolicy = .ReturnCacheDataElseLoad
         URLRequest.timeoutInterval = 100
         
-        
-        
-        Alamofire.request(.POST, URLRequest,  encoding: .JSON)
+        Alamofire.request(.POST, URLRequest, encoding: .JSON)
             .responseJSON { response in
                 guard response.result.error == nil else {
                     // got an error in getting the data, need to handle it
                     print("error calling GET on /posts/1")
                     print(response.result.error!)
-                    // self.displayMessage(String(response.result.error))
                     self.displayMessage("Some Network Issue")
                     return
                 }
@@ -303,77 +220,33 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                 if let value: AnyObject = response.result.value {
                     // handle the results as JSON, without a bunch of nested if loops
                     let swiftyJsonVar = JSON(value)
-                    // print(swiftyJsonVar)
-                    
-                    
                     let results = swiftyJsonVar["GetAllUserVideolistResult"]
-                    
-                    // print(results)
-                    
-                    
-                    
-                    
                     let results2 = results["ObjVideoThumbList"]
                   
-                    
-                    
-                    
-                    
                     for (_, object) in results2 {
-
                         
-                             let videolistthumb = object["videoimage"].stringValue
-                        
-                             self.videosimageslider.append(videolistthumb)
-                        
+                     let videolistthumb = object["videoimage"].stringValue
+                
+                     self.videosimageslider.append(videolistthumb)
                         
                     }
                     
-                    
-                    //
-                    
-                    
-                    
-                    
-                    
-                    
                     let results3 = results["objvideocategory"]
-                  //  print(results3)
-                    
                     
                     for (_, object) in results3 {
                         
                         let categoryname =  object["Category"].stringValue
                         let videolist = object["objResult"]
                         
-                        
-                        
-                      //  print("category name")
-                      //  print(categoryname)
-                        
                         for (_, object) in videolist {
                             
-                                let description = object["Description"].stringValue
-                             //   print(description)
-                            
+                            let description = object["Description"].stringValue
                             let heading =  object["Heading"].stringValue
                             let uploadfile = object["UploadFileID"].stringValue
                             let uploaddate =  object["uploadededDate"].stringValue
-                            
-                           // let memberid = object["MemberID"].stringValue
                             let videothumb =  object["videoThumb"].stringValue
-                            
                             let membername = object["MemberName"].stringValue
-                            
-                          //  print(membername)
-                            
                             let memberimage = object["MemberImage"].stringValue
-                            
-                           // print(memberimage)
-                            
-                            
-                            
-    
 
                             self.arrRes.append(heading)
                             self.arrDescription.append(description)
@@ -383,9 +256,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                             self.categoryname.append(categoryname)
                             self.membername.append(membername)
                             self.memberimage.append(memberimage)
-                            
-                            
-
                         }
                         
                         dispatch_async(dispatch_get_main_queue()) {
@@ -395,19 +265,9 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                             self.indicator.stopAnimating()
                             self.indicator.willRemoveSubview(self.indicator)
                             self.imageViewObject.removeFromSuperview()
-                            
-
-
-                            
                         }
                         
-                        
-                        
-                        
-                        
                     }
-                    
-                    
                     
                 }
         }
