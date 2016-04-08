@@ -77,16 +77,16 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hdy-PQ-KXG">
                                                             <rect key="frame" x="46" y="59" width="65" height="65"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdG-gD-ElQ">
-                                                            <rect key="frame" x="143" y="44" width="231" height="54"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynr-9X-Qph">
                                                             <rect key="frame" x="144" y="99" width="230" height="25"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.22187713456284153" green="0.22187713456284153" blue="0.22187713456284153" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdG-gD-ElQ">
+                                                            <rect key="frame" x="143" y="44" width="231" height="54"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -133,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="-1328"/>
+            <point key="canvasLocation" x="200" y="-1124"/>
         </scene>
         <!--Upload Videos-->
         <scene sceneID="73m-Sm-yIl">
@@ -241,7 +241,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Upload Videos" id="QWx-ff-Ddl">
-                        <barButtonItem key="leftBarButtonItem" title="Home" id="EtD-2i-fcf"/>
+                        <barButtonItem key="leftBarButtonItem" id="EtD-2i-fcf"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -255,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kgd-Yv-sag" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3964" y="-778"/>
+            <point key="canvasLocation" x="4179" y="-810"/>
         </scene>
         <!--RssFeed-->
         <scene sceneID="z30-8u-0Tt">
@@ -313,7 +313,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="RssFeed" id="Pce-f7-ckh">
-                        <barButtonItem key="leftBarButtonItem" title="Home" id="JQw-Yh-Sdc"/>
+                        <barButtonItem key="leftBarButtonItem" id="JQw-Yh-Sdc"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -346,7 +346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="noM-B4-5i4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3273.5" y="-1222.5"/>
+            <point key="canvasLocation" x="2604.5" y="-1925.5"/>
         </scene>
         <!--Left Drawer Controller-->
         <scene sceneID="NYo-zR-Yn6">
@@ -390,7 +390,7 @@
                                                     <rect key="frame" x="30" y="15" width="36" height="36"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMa-Lz-cxU">
-                                                    <rect key="frame" x="100" y="18" width="205" height="31"/>
+                                                    <rect key="frame" x="100" y="17" width="205" height="31"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.96934185606060608" green="0.96934185606060608" blue="0.96934185606060608" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -558,7 +558,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZe-Aw-Jhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1377" y="-1716"/>
+            <point key="canvasLocation" x="1630" y="-1803"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="gs9-iF-Uck">
@@ -697,8 +697,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Profile" id="P9e-Js-eLq">
-                        <barButtonItem key="backBarButtonItem" title="Home" id="Y38-nq-fTL"/>
-                        <barButtonItem key="leftBarButtonItem" title="Home" style="plain" id="ouL-IF-mXQ"/>
+                        <barButtonItem key="backBarButtonItem" id="Y38-nq-fTL"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="ouL-IF-mXQ"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -721,14 +721,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nEQ-sY-b01" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028.5" y="-910.5"/>
+            <point key="canvasLocation" x="1965.5" y="-858.5"/>
         </scene>
         <!--Video List-->
         <scene sceneID="8B1-cB-ohq">
             <objects>
                 <tableViewController id="5S5-sN-zSS" customClass="VideosViewController" customModule="WomenWomenFirst" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="zqp-FN-j1p">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.70839251893939392" green="0.69316837546248078" blue="0.58403268416957443" alpha="1" colorSpace="calibratedRGB"/>
@@ -813,11 +813,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Video List" id="hx7-g8-ZsY">
-                        <barButtonItem key="leftBarButtonItem" title="Back" style="plain" id="IgC-OW-KFe">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="IgC-OW-KFe">
                             <color key="tintColor" white="0.077405427631578941" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
-                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="backbtn" destination="IgC-OW-KFe" id="w3F-Ml-Dwu"/>
@@ -836,7 +835,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="4235" y="-1240"/>
+            <point key="canvasLocation" x="3202" y="-1869"/>
         </scene>
         <!--Video Play Controller-->
         <scene sceneID="eHk-of-r2M">
@@ -847,7 +846,7 @@
                         <viewControllerLayoutGuide type="bottom" id="eVZ-RJ-iXv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="756" id="0Rd-Kn-gVW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QCY-Hf-hdN">
@@ -855,7 +854,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentCell" rowHeight="313" id="pSK-l2-9eu" customClass="CommentVideoCell" customModule="WomenWomenFirst" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="414" height="313"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="313"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pSK-l2-9eu" id="no7-QL-cD1">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="312"/>
@@ -983,7 +982,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wc0-aS-u10" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6305" y="-1172"/>
+            <point key="canvasLocation" x="5795" y="-1168"/>
         </scene>
         <!--You tube Link-->
         <scene sceneID="ez0-y7-uDS">
@@ -1051,7 +1050,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="You tube Link" id="h1K-ky-NJJ">
                         <barButtonItem key="backBarButtonItem" title="Home" id="2Eh-qp-IVM"/>
-                        <barButtonItem key="leftBarButtonItem" title="Home" style="plain" id="VpY-QL-Kws"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="VpY-QL-Kws"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -1063,7 +1062,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kaE-A8-HRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3772" y="-631"/>
+            <point key="canvasLocation" x="3507" y="-514"/>
         </scene>
         <!--Add Comment-->
         <scene sceneID="Dyf-zS-CIS">
@@ -1117,12 +1116,12 @@
             <objects>
                 <tableViewController id="4on-M7-ZuF" customClass="MyVideosController" customModule="WomenWomenFirst" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="dWi-2J-7F8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyVideoCell" rowHeight="150" id="grf-MP-zAw" customClass="MyVideosCell" customModule="WomenWomenFirst" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="grf-MP-zAw" id="e5a-fg-BlJ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="149"/>
@@ -1183,7 +1182,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="My Videos" id="Pg9-se-4UG">
-                        <barButtonItem key="leftBarButtonItem" title="Home" id="djq-hD-yDu"/>
+                        <barButtonItem key="leftBarButtonItem" id="djq-hD-yDu"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -1194,7 +1193,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIl-eL-8Ge" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4961" y="-1163"/>
+            <point key="canvasLocation" x="3992" y="-1629"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="DLV-q6-eiU">
@@ -1368,7 +1367,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGq-o6-Bes" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245.5" y="-1142.5"/>
+            <point key="canvasLocation" x="672.5" y="-1124.5"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="txc-4I-0nr">
@@ -1431,7 +1430,7 @@
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPZ-9p-19y">
-                                <rect key="frame" x="-5" y="36" width="321" height="303"/>
+                                <rect key="frame" x="47" y="35" width="321" height="303"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tG4-m0-qRB">
                                         <rect key="frame" x="26" y="42" width="275" height="40"/>
@@ -1535,24 +1534,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9l-z6-Gkr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1415" y="-1114"/>
+            <point key="canvasLocation" x="1159" y="-1601"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u29-BM-utk">
             <objects>
                 <navigationController id="P6L-Ia-OkP" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7bv-av-WKE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="7bv-av-WKE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Lti-9x-jid" kind="relationship" relationship="rootViewController" id="Wyo-gk-WLN"/>
+                        <segue destination="5S5-sN-zSS" kind="relationship" relationship="rootViewController" id="T6R-xk-hZJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Red-BH-zhc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4408.5" y="-351.5"/>
+            <point key="canvasLocation" x="2599.5" y="-1056.5"/>
         </scene>
         <!--Video List View-->
         <scene sceneID="fTw-IK-Lzy">
@@ -1601,8 +1601,9 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yno-mu-Mdh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="JsJ-UM-HjX"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="y1I-Rk-vXY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="y1I-Rk-vXY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1613,7 +1614,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trz-CC-dc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3444.5" y="-553.5"/>
+            <point key="canvasLocation" x="2753.5" y="-185.5"/>
         </scene>
         <!--Videos-->
         <scene sceneID="XhL-f1-gFm">
@@ -1621,8 +1622,9 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lti-9x-jid" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Videos" id="cU4-8I-UGO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uT8-ns-RjD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="uT8-ns-RjD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1633,7 +1635,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I1K-7W-kGi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2412.5" y="-1564.5"/>
+            <point key="canvasLocation" x="2159.5" y="-1879.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GKE-yl-rGh">
@@ -1656,7 +1658,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="meZ-No-dne" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4302.5" y="-45.5"/>
+            <point key="canvasLocation" x="4106.5" y="62.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E2h-N4-NIc">
@@ -1695,7 +1697,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WKk-a4-Tko" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055.5" y="-530.5"/>
+            <point key="canvasLocation" x="1011.5" y="-340.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pYY-CO-ZRc">
@@ -1714,7 +1716,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9S-fv-fCs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1633.5" y="-506.5"/>
+            <point key="canvasLocation" x="1524.5" y="-858.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XbE-vX-nY5">
@@ -1751,8 +1753,8 @@
         <image name="uservideo.png" width="152" height="152"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YX5-Ju-aF2"/>
-        <segue reference="Wyo-gk-WLN"/>
-        <segue reference="9Dx-QL-jtZ"/>
+        <segue reference="ciQ-fW-bU2"/>
+        <segue reference="VPu-bi-gL8"/>
+        <segue reference="9Zj-PT-ojv"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,6 +17,7 @@ import AVKit
 import AVFoundation
 
 import MobileCoreServices
+import ionicons
 
 class Editprofile :UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate ,NSURLSessionDelegate,NSURLSessionTaskDelegate,NSURLSessionDataDelegate,UITextFieldDelegate
 {
@@ -250,22 +251,13 @@ func displayMessage(message:String)
     
     }
     
-    
-    
- 
-
-
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        
+        super.viewDidLoad()        
         homeback.target = self.revealViewController()
         homeback.action = Selector("revealToggle:")
-        
+        homeback.image = IonIcons.imageWithIcon(ion_navicon_round, iconColor: UIColor.darkGrayColor(), iconSize: 30, imageSize: CGSize(width: 30, height: 30))
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        
         
         editprofileBtn.layer.cornerRadius = 8.0
         setBorderTexts()

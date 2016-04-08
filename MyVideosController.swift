@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Alamofire
 import SwiftyJSON
+import ionicons
 
 
 class MyVideosController:UITableViewController
@@ -40,7 +41,7 @@ class MyVideosController:UITableViewController
         homebtn.target = self.revealViewController()
         homebtn.action = Selector("revealToggle:")
         
-        
+        homebtn.image = IonIcons.imageWithIcon(ion_navicon_round, iconColor: UIColor.darkGrayColor(), iconSize: 30, imageSize: CGSize(width: 30, height: 30))
 
         
 //loadVideoList()

@@ -12,7 +12,7 @@ import MediaPlayer
 import MobileCoreServices
 import Alamofire
 import SwiftyJSON
-
+import ionicons
 
 class UploadVideosController:UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextFieldDelegate
 
@@ -206,6 +206,7 @@ class UploadVideosController:UIViewController , UIImagePickerControllerDelegate,
         homebtn.target = self.revealViewController()
         homebtn.action = Selector("revealToggle:")
         
+        homebtn.image = IonIcons.imageWithIcon(ion_navicon_round, iconColor: UIColor.darkGrayColor(), iconSize: 30, imageSize: CGSize(width: 30, height: 30))
 
          setBorderTxt()
         

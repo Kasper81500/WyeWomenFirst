@@ -12,7 +12,7 @@ import Foundation
 import UIKit
 import Alamofire
 import SwiftyJSON
-
+import ionicons
 
 class VideosViewController:UITableViewController , UISearchResultsUpdating
 {
@@ -61,15 +61,11 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         
         getList()
         
-       
-        
-        
-        
         backbtn.target = self.revealViewController()
         backbtn.action = Selector("revealToggle:")
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
-        
+        backbtn.image = IonIcons.imageWithIcon(ion_navicon_round, iconColor: UIColor.darkGrayColor(), iconSize: 30, imageSize: CGSize(width: 30, height: 30))
         
         resultSearchController = UISearchController(searchResultsController: nil)
         resultSearchController.searchResultsUpdater = self

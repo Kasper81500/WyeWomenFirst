@@ -53,17 +53,34 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
        super.viewDidLoad()
         
-       getVideoList()
-        
-       currentCount = 0
-        
-       setBackGroundView()
-        
-       scrollviewAppear()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
        
-       progressBarView()
+        getVideoList()
         
-       self.tableview.separatorStyle = UITableViewCellSeparatorStyle.None
+        currentCount = 0
+        
+        setBackGroundView()
+        
+        scrollviewAppear()
+        
+        progressBarView()
+        
+        self.tableview.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+    }
+    
+    func checkVerifiedUser(){
+        
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if let username = prefs.stringForKey("USERNAME") {
+            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home") as UIViewController
+            self.presentViewController(viewController, animated: false, completion: nil)
+        }else{
+            self.imageViewObject.removeFromSuperview()
+        }
     }
     
     func setBackGroundView()
@@ -88,7 +105,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     func progressBarView()
     {
-        
         indicator  = UIActivityIndicatorView  (activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         indicator.color = UIColor .blackColor()
         indicator.frame = CGRectMake(0.0, 0.0, 60.0, 60.0)
@@ -96,19 +112,11 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         self.view.addSubview(indicator)
         indicator.bringSubviewToFront(self.view)
         indicator.startAnimating()
-
-        
     }
-    
-    
-    
     
     override func viewDidDisappear(animated: Bool) {
         
         scrollingTimer.invalidate()
-        
-        
-        
     }
     
     
@@ -116,12 +124,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         return Int(360 * (currentCount / maxCount))
     }
     
-    
-    
-    
-    
     // -------- ------    Show Image Slider using Timer ----------------- //
-    
     
     func showview()
     {
@@ -176,30 +179,19 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
         if(currentOffset.x < scrollview.contentSize.width - 500)
         {
-           
-
-             scrollview.setContentOffset(currentOffset, animated: false)
-             currentOffset = CGPointMake(0, currentOffset.y )
+            scrollview.setContentOffset(currentOffset, animated: false)
+            currentOffset = CGPointMake(0, currentOffset.y )
             
            //scrollview.contentSize = CGSize(width: 0, height: 0);
         }
         else
         {
-          
             scrollingTimer.invalidate()
             showview()
-           
         }
-        
-        
     }
     
-    
-    
     // -----  get list ------ //
-    
-    
-    
     func getVideoList()
     {
         let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/GetAllUserVideolist/")
@@ -257,31 +249,20 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                             self.membername.append(membername)
                             self.memberimage.append(memberimage)
                         }
-                        
-                        dispatch_async(dispatch_get_main_queue()) {
-                           
-                            self.tableview.reloadData()
-                            self.showview()
-                            self.indicator.stopAnimating()
-                            self.indicator.willRemoveSubview(self.indicator)
-                            self.imageViewObject.removeFromSuperview()
-                        }
-                        
                     }
                     
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.tableview.reloadData()
+                        self.showview()
+                        self.indicator.stopAnimating()
+                        self.indicator.willRemoveSubview(self.indicator)
+                        self.checkVerifiedUser()
+                    }
                 }
         }
     }
-
     
-    
-    
-    
-    
-        // ---------------------------- Message Display ---------------------------- //
-    
-    
-    
+    // ---------------------------- Message Display ---------------------------- //
     func displayMessage(message:String)
     {
         let alertController = UIAlertController(title: "Message Alert", message: message, preferredStyle: .Alert)
@@ -356,9 +337,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         cell.cellview.layer.borderColor = UIColor.grayColor().CGColor
         cell.cellview.layer.borderWidth = 0.5
         
-        
-        
-        
         if let url = NSURL(string: memberimage[indexPath.row]) {
             
             
@@ -366,8 +344,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                 //			println(self)
             }
             
-            
-            cell.memberimage.sd_setImageWithURL(url, completed: block)
+           cell.memberimage.sd_setImageWithURL(url, completed: block)
             
            cell.memberimage.layer.borderWidth = 1.0
            cell.memberimage.layer.masksToBounds = false
@@ -376,26 +353,16 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
            cell.memberimage.clipsToBounds = true
         }
         
-
-        
-        
-      
         if let url = NSURL(string: arrPath[indexPath.row]) {
-            
             
             let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) -> Void in
                 //			println(self)
             }
             
-            
             cell.imagepath.sd_setImageWithURL(url, completed: block)
         }
-
         
         return cell
-        
-        
-        
     }
     
     
@@ -410,10 +377,6 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         
         return 155
     }
-
-   
-    
-    
     
 }
 

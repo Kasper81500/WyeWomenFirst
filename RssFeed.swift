@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import ionicons
 
 class RssFeed : UIViewController , MWFeedParserDelegate
 {
@@ -109,7 +109,7 @@ class RssFeed : UIViewController , MWFeedParserDelegate
         
         homebtn.target = self.revealViewController()
         homebtn.action = Selector("revealToggle:")
-        
+        homebtn.image = IonIcons.imageWithIcon(ion_navicon_round, iconColor: UIColor.darkGrayColor(), iconSize: 30, imageSize: CGSize(width: 30, height: 30))
         
     }
     
