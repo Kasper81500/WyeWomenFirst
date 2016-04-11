@@ -33,14 +33,10 @@ class RssFeed : UIViewController , MWFeedParserDelegate
         
     }
     
-    
-    
     func feedParser(parser: MWFeedParser!, didParseFeedInfo info: MWFeedInfo!) {
         
         print(info)
         self.title = info.title
-        
-        
         
     }
     

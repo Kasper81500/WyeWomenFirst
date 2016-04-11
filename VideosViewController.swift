@@ -311,10 +311,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
     
     func getList()
     {
-        
-        
-        
-    
+      
         //let url = NSURL(string:"http://applehotelbooking.com/webapi/Service1.svc/GetAllUserVideolist/")
         
           let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/GetAllUserVideolist/")

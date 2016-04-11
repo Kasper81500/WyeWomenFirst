@@ -51,9 +51,15 @@ class UploadVideosController:UIViewController , UIImagePickerControllerDelegate,
     
     @IBOutlet var videodone: UIButton!
     
+    var isUploadingVideo : Bool = false
     
     
     @IBAction func sendData(sender: AnyObject) {
+        
+        if isUploadingVideo == true {
+            return
+        }
+        
         self.videodone.hidden = true
         
         // print ("Click on send")
@@ -61,53 +67,58 @@ class UploadVideosController:UIViewController , UIImagePickerControllerDelegate,
         
         self.progressbar.tintColor = UIColorFromHex(0x03dc31,alpha:0.8)
         
-        
         self.progressbar.setProgress(0, animated: false)
-        
-        
         
         filename = "UserVideo"
         
-        
         filedesc = filedescription.text!
         print(filedesc)
-        
-        
         
         category = "UserVideoFiles"
         print(category)
         
         
-        if( filename.isEmpty || filedesc.isEmpty || category.isEmpty)
+        if(filedesc.isEmpty || filedesc == "Video Description")
         {
-            
-            displayMessage("Please Enter Values")
+            displayMessage("Please Enter the Video Description")
             
             return
-            
         }
             
         else
         {
-            
-            
             let ipcVideo = UIImagePickerController()
             ipcVideo.delegate = self
             ipcVideo.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
             let kUTTypeMovieAnyObject : AnyObject = kUTTypeMovie as AnyObject
             ipcVideo.mediaTypes = [kUTTypeMovieAnyObject as! String]
             self.presentViewController(ipcVideo, animated: true, completion: nil)
-            
-            
         }
-
-        
-        
-        
     }
     
-
-    
+    @IBAction func stopUploadingVideo(sender: UIButton) {
+        if isUploadingVideo == true {
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                Alamofire.Manager.sharedInstance.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downloadTasks in
+                    for task in dataTasks {
+                        task.cancel()
+                    }
+                    for task in uploadTasks {
+                        task.cancel()
+                    }
+                    for task in downloadTasks {
+                        task.cancel()
+                    }
+                }
+                
+                self.isUploadingVideo = false
+                self.videodone.hidden = true
+                self.progressbar.setProgress(0, animated: true)
+                self.progresstxt.text = "\(0)%"
+            }
+        }
+    }
     
     func displayMessage(message:String)
     {
@@ -126,30 +137,18 @@ class UploadVideosController:UIViewController , UIImagePickerControllerDelegate,
         self.presentViewController(alertController, animated: true, completion:nil)
         
     }
-
-
-    
-    
     
     func setBorderTxt()
     {
-       
-        
-        
         filedescription.layer.borderWidth = 2
         filedescription.layer.borderColor = UIColorFromHex(0x0d7ab5,alpha:0.8)
             .CGColor
         filedescription.layer.cornerRadius = 16.0
         
-
-        
         // Log in button
-        
-        
-       
          selectvideo.layer.cornerRadius = 12.0
          videodone.layer.cornerRadius = 12.0
-         videodone.backgroundColor = UIColorFromHex(0x03b157,alpha:1)
+         //videodone.backgroundColor = UIColorFromHex(0x03b157,alpha:1)
         
     }
 
@@ -349,7 +348,10 @@ class UploadVideosController:UIViewController , UIImagePickerControllerDelegate,
                   //http://applehotelbooking.com/webapi/FileUploadService.svc/UploadFile
                   //
                     
-            
+        isUploadingVideo = true;
+        self.videodone.setTitle("Cancel", forState: UIControlState.Normal)
+        self.videodone.hidden = false
+                    
         Alamofire.upload(.POST, "http://www.womenwomenfirst.com/service/FileUploadService.svc/UploadFile/"+finalcategory+"/"+finaldescription+"/"+memberidvideo+"/"+finalcategory+"/"+finalfilevalue+".mp4", file: urlVideo)
             .progress { bytesWritten, totalBytesWritten, totalBytesExpectedToWrite in
                 print(totalBytesWritten)
@@ -384,12 +386,14 @@ class UploadVideosController:UIViewController , UIImagePickerControllerDelegate,
                     {
                         
                          self.displayMessage("Video Uploaded Successfully")
-                         self.videodone.hidden = false
+                         self.videodone.setTitle("Done!", forState: UIControlState.Normal)
+                         self.isUploadingVideo = false
                     }
                     else
                     {
                          self.displayMessage("Error during Upload")
-                         self.videodone.hidden = false
+                         self.videodone.setTitle("Done!", forState: UIControlState.Normal)
+                         self.isUploadingVideo = false
                     }
                     
                 }

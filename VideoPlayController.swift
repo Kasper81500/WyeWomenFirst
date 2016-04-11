@@ -429,12 +429,6 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
                         
                          self.videowebview.allowsInlineMediaPlayback = true
                         
-                        
-                        
-                        
-                        
-
-                        
                     }
                     
                     

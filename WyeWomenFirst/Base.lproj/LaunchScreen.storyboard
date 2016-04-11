@@ -9,7 +9,7 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <imageView key="view" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twtr-icn-heart-off.png" id="k3Y-dL-Xrc">
+                    <imageView key="view" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash.png" id="k3Y-dL-Xrc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <accessibility key="accessibilityConfiguration">
@@ -20,10 +20,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30.5" y="355.5"/>
+            <point key="canvasLocation" x="-113.5" y="366.5"/>
         </scene>
     </scenes>
     <resources>
-        <image name="twtr-icn-heart-off.png" width="15" height="15"/>
+        <image name="splash.png" width="1242" height="2148"/>
     </resources>
 </document>
