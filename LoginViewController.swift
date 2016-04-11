@@ -61,7 +61,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate, UIAlertViewDel
     @IBAction func sendForget(sender: AnyObject) {
         
         let email = emailText.text!
-        if( isValidEmail(email))
+        if(!isValidEmail(email))
         {
             let alertController = UIAlertController(title: "Warning!", message: "Please Enter Email", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }

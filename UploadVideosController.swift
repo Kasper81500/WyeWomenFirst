@@ -14,12 +14,12 @@ import Alamofire
 import SwiftyJSON
 import ionicons
 
-class UploadVideosController:UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextFieldDelegate
+class UploadVideosController:UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextViewDelegate
 
 {
     
    
-    @IBOutlet var filedescription: UITextField!
+    @IBOutlet var filedescription: UITextView!
  
     
     
@@ -211,12 +211,13 @@ class UploadVideosController:UIViewController , UIImagePickerControllerDelegate,
          setBorderTxt()
         
         videodone.hidden = true
-  
         
-     
+        filedescription.text = "Video Description"
+        filedescription.textColor = UIColor.lightGrayColor()
         
-        filedescription.placeholder = "Video Description" 
+        filedescription.becomeFirstResponder()
         
+        filedescription.selectedTextRange = filedescription.textRangeFromPosition(filedescription.beginningOfDocument, toPosition: filedescription.beginningOfDocument)
         /*
         
         let gradientLayer = CAGradientLayer()
@@ -273,7 +274,36 @@ class UploadVideosController:UIViewController , UIImagePickerControllerDelegate,
         
     }
     
-    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        
+        // Combine the textView text and the replacement text to
+        // create the updated text string
+        let currentText:NSString = filedescription.text
+        let updatedText = currentText.stringByReplacingCharactersInRange(range, withString:text)
+        
+        // If updated text view will be empty, add the placeholder
+        // and set the cursor to the beginning of the text view
+        if updatedText.isEmpty {
+            
+            filedescription.text = "Video Description"
+            filedescription.textColor = UIColor.lightGrayColor()
+            
+            filedescription.selectedTextRange = filedescription.textRangeFromPosition(filedescription.beginningOfDocument, toPosition: filedescription.beginningOfDocument)
+            
+            return false
+        }
+            
+            // Else if the text view's placeholder is showing and the
+            // length of the replacement string is greater than 0, clear
+            // the text view and set its color to black to prepare for
+            // the user's entry
+        else if filedescription.textColor == UIColor.lightGrayColor() && !filedescription.text.isEmpty {
+            textView.text = nil
+            textView.textColor = UIColor.blackColor()
+        }
+        
+        return true
+    }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         

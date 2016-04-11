@@ -72,7 +72,7 @@ class Editprofile :UIViewController,UIImagePickerControllerDelegate,UINavigation
     
     
     
-    @IBAction func selectImage(sender: AnyObject) {
+    func loadUserPhoto(gestureRecognizer: UIGestureRecognizer){
         
         
         
@@ -303,28 +303,17 @@ func displayMessage(message:String)
             memberpicurl = memberid
             
             getList(memberid)
-            
-            
-                   }
+        }
     
-        
-        
-        
+        //Add gesture to the user photo
+        let loadUserPhotoGesture = UITapGestureRecognizer(target: self, action: #selector(RegistrationViewController.loadUserPhoto(_:)))
+        self.imageview.addGestureRecognizer(loadUserPhotoGesture)
+        self.imageview.userInteractionEnabled = true
     }
-
-
-    
-    
-    
    
     @IBAction func sendData(sender: AnyObject) {
         
-        
-        
-        
         enterData()
-        
-        
         
     }
     
@@ -688,12 +677,6 @@ func displayMessage(message:String)
         phoneTxt.layer.borderColor = UIColorFromHex(0x0d7ab5,alpha:0.8)
             .CGColor
         phoneTxt.layer.cornerRadius = 8.0
-        
-        
-        selectBtn.layer.cornerRadius = 8.0
-        
-  
-
         
     }
     

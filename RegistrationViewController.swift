@@ -381,16 +381,15 @@ class RegistrationViewController: UIViewController, UIPickerViewDataSource, UIPi
         
     }
     
-//    override func viewDidLayoutSubviews()
-//    {
-//        super.viewDidLayoutSubviews()
-//        self.scrollview.contentSize = CGSizeMake(200,900);
-//    }
+    override func viewDidLayoutSubviews()
+    {
+        super.viewDidLayoutSubviews()
+        self.scrollview.contentSize = CGSizeMake(200,900);
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        return
         
         // Border Button
         registerBtn.layer.cornerRadius = 8.0
@@ -477,7 +476,7 @@ class RegistrationViewController: UIViewController, UIPickerViewDataSource, UIPi
         //set border text
         setBorderTexts()
         
-        //gradientColor()
+        gradientColor()
         
     }
     

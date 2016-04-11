@@ -87,7 +87,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     {
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         imageViewObject = UIImageView(frame:CGRectMake(0, 0, screenSize.width, screenSize.height));
-        imageViewObject.image = UIImage(named:"bic2")
+        imageViewObject.image = UIImage(named:"splash")
         imageViewObject.opaque = true
         self.view.addSubview(imageViewObject)
     }

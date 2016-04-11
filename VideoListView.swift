@@ -20,11 +20,6 @@ class VideoListView:UIViewController
         backBtn.target = self.revealViewController()
         backBtn.action = Selector("revealToggle:")
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        
     }
-    
-    
-    
-    
     
 }

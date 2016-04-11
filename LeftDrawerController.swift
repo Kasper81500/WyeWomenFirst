@@ -55,7 +55,7 @@ class LeftDrawerController : UIViewController ,UITableViewDataSource , UITableVi
             imageuser.clipsToBounds = true
         }
 
-        tableview.backgroundColor = UIColorFromHex(0x6e7173,alpha:1)
+        //tableview.backgroundColor = UIColorFromHex(0x6e7173,alpha:1)
       
         self.tableview.rowHeight = 60
         

@@ -42,10 +42,6 @@ class MyVideosController:UITableViewController
         homebtn.action = Selector("revealToggle:")
         
         homebtn.image = IonIcons.imageWithIcon(ion_navicon_round, iconColor: UIColor.darkGrayColor(), iconSize: 30, imageSize: CGSize(width: 30, height: 30))
-
-        
-//loadVideoList()
-        
         
         let defaults = NSUserDefaults.standardUserDefaults()
         if let name = defaults.stringForKey("USERNAME")
@@ -82,36 +78,22 @@ class MyVideosController:UITableViewController
         indicator.bringSubviewToFront(self.view)
         indicator.startAnimating()
         
-        
     }
-    
-    
-    
-    
-    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("MyVideoCell", forIndexPath:indexPath) as! MyVideosCell
         
-        
         cell.myvideostitle.text = arrRes[indexPath.row]
         cell.myvideosdesc.text = arrDescription[indexPath.row]
         cell.myvideosdate.text = datetime[indexPath.row]
         cell.categoryname.text = categoryname[indexPath.row]
-
-        
         
         cell.cellview.layer.cornerRadius = 3
         cell.cellview.layer.borderColor = UIColor.grayColor().CGColor
         cell.cellview.layer.borderWidth = 0.5
         
-
-        
-        
         if let url = NSURL(string: arrPath[indexPath.row]) {
-            
-            
             
             let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) -> Void in
                 //			println(self)
@@ -119,9 +101,7 @@ class MyVideosController:UITableViewController
             
             // let url = NSURL(string: "http://yikaobang-test.u.qiniudn.com/FnZTPYbldNXZi7cQ5EJHmKkRDTkj")
             
-            
             cell.myvideosimage.sd_setImageWithURL(url, completed: block)
-            
             
             /*
             if let data = NSData(contentsOfURL: url) {
@@ -129,13 +109,9 @@ class MyVideosController:UITableViewController
             }
             */
             
-            
         }
         
-        
         return cell
-        
-        
         
     }
     
@@ -145,26 +121,16 @@ class MyVideosController:UITableViewController
         return 150
     }
     
-    
-
-    
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
         
         print(self.arrRes.count)
         return self.arrRes.count
-       
         
     }
-    
     
     func getList(memberid:String)
     {
         
-        
-  
        // let url = NSURL(string:"http://applehotelbooking.com/webapi/Service1.svc/GetUserVideolist/"+memberid)
         
        
@@ -178,14 +144,6 @@ class MyVideosController:UITableViewController
         URLRequest.cachePolicy = .ReturnCacheDataElseLoad
         URLRequest.timeoutInterval = 100
         
-        
-
-        
-        // print(url)
-        
-        
-        
-        
         Alamofire.request(.POST, URLRequest,  encoding: .JSON)
             .responseJSON { response in
                 guard response.result.error == nil else {
@@ -194,6 +152,10 @@ class MyVideosController:UITableViewController
                     print(response.result.error!)
                     // self.displayMessage(String(response.result.error))
                     self.displayMessage("Some Network Issue")
+                    
+                    self.indicator.stopAnimating()
+                    self.indicator.willRemoveSubview(self.indicator)
+
                     return
                 }
                 
@@ -203,23 +165,17 @@ class MyVideosController:UITableViewController
                     // print(swiftyJsonVar)
                     
                     
-                    let results = swiftyJsonVar["GetUserVideolistResult"]
+                   let results = swiftyJsonVar["GetUserVideolistResult"]
                     
-                    // print(results)
-                    
-                    
-                    // print(results)
-                    //  print(swiftyJsonVar.count)
-                    //    print("-------results1------")
-                    
-                       let results1 = results["Message"].stringValue
-                       print("object results ")
-                       print(results1)
-                    
-                    
+                   let results1 = results["Message"].stringValue
+                   print("object results ")
+                   print(results1)
                     
                     if(results1 == "novideo")
                     {
+                        self.indicator.stopAnimating()
+                        self.indicator.willRemoveSubview(self.indicator)
+
                         let alertController = UIAlertController(title: "My Videos!", message: "Sorry no Videos yet Please upload first", preferredStyle: .Alert)
                         let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
                         alertController.addAction(OKAction)
@@ -314,11 +270,6 @@ class MyVideosController:UITableViewController
         self.presentViewController(alertController, animated: true, completion:nil)
         
     }
-
-    
-    
-    
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
