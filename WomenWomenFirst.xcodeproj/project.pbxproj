@@ -86,6 +86,7 @@
 		F6540F731CB6E5BA00D3C899 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F6540F721CB6E5BA00D3C899 /* Podfile */; };
 		F6540F7A1CB6E9F400D3C899 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = F6540F791CB6E9F400D3C899 /* facebook.png */; };
 		F6C01CB01CBAD15A0092C3D8 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = F6C01CAF1CBAD15A0092C3D8 /* splash.png */; };
+		F6F6DC251CBC2A7100C2CB46 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6DC241CBC2A7100C2CB46 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +237,7 @@
 		F6540F721CB6E5BA00D3C899 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F6540F791CB6E9F400D3C899 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		F6C01CAF1CBAD15A0092C3D8 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		F6F6DC241CBC2A7100C2CB46 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +412,7 @@
 				AEC8C9451C08359800927871 /* Info.plist */,
 				AE71DDC61C2426C200F50816 /* Images.xcassets */,
 				AEAB0B4A1C3AA72F00E23F40 /* NetData.swift */,
+				F6F6DC241CBC2A7100C2CB46 /* CustomTextField.swift */,
 			);
 			path = WyeWomenFirst;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				AEC8C93C1C08359800927871 /* ViewController.swift in Sources */,
 				AE7520431C1AD60C00D310F6 /* KDCircularProgress.swift in Sources */,
 				AEC8C96C1C0836F300927871 /* RegistrationViewController.swift in Sources */,
+				F6F6DC251CBC2A7100C2CB46 /* CustomTextField.swift in Sources */,
 				AE86454F1C1161AA00017231 /* GTMNSString+HTML.m in Sources */,
 				AE9357DF1C0C1D0B0049808A /* VideoCell.swift in Sources */,
 				AEDE79721C3CEFEE00860637 /* UIButton+WebCache.m in Sources */,

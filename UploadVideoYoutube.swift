@@ -12,7 +12,7 @@ import SwiftyJSON
 import ionicons
 
 
-class UploadVideoYoutube:UIViewController{
+class UploadVideoYoutube:UIViewController, UITextViewDelegate{
     
     
     @IBOutlet var homebtn: UIBarButtonItem!
@@ -24,7 +24,7 @@ class UploadVideoYoutube:UIViewController{
     @IBOutlet var uploadbtn: UIButton!
     
     
-    @IBOutlet var youtubedes: UITextField!
+    @IBOutlet var youtubedes: UITextView!
     
     
     var filename : String = ""
@@ -37,21 +37,12 @@ class UploadVideoYoutube:UIViewController{
     
     @IBAction func sendUrl(sender: AnyObject) {
         
-        
-        
-        
-       // let url = NSURL(string:"http://applehotelbooking.com/webapi/FileUploadService.svc/UploadFileUrl/")
          let url = NSURL(string:"http://www.womenwomenfirst.com/service/FileUploadService.svc/UploadFileUrl/")
-        //print(url)
-        
-        
         
         headingval = "Youtubefile"
         category = "Youtube"
-        filedesc = youtubedes.text!
+        filedesc = youtubedes.text
         filename = "Youtube"
-        
-        
         
         let stringWithPossibleURL: String = self.youtubelink.text! // Or another source of text
         
@@ -68,7 +59,7 @@ class UploadVideoYoutube:UIViewController{
         
         
         
-        if(headingval.isEmpty || category.isEmpty || filedesc.isEmpty)
+        if(headingval.isEmpty || category.isEmpty || filedesc.isEmpty || filedesc == "Description")
         {
             let controller: UIAlertController = UIAlertController(title: "Enter Values", message: "Do not left empty Fields", preferredStyle: .Alert)
             controller.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
@@ -78,9 +69,6 @@ class UploadVideoYoutube:UIViewController{
         else
         {
             
-            
-            
-            
             let headingvalfinal:String = headingval.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
             let finaldesc:String = filedesc.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
             
@@ -88,15 +76,9 @@ class UploadVideoYoutube:UIViewController{
             
             let finalname:String = filename.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
             
-            
-            
-            
-            
             let request = NSMutableURLRequest(URL: url!)
             request.HTTPMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            
             
             let values = ["Heading": ""+headingvalfinal,"Desp":""+finaldesc,"MemberID":""+memberidvideo,"Category":""+finalcate,"fileName":""+finalname
                 ,"url":""+self.youtubelink.text!]
@@ -129,45 +111,31 @@ class UploadVideoYoutube:UIViewController{
                         self.presentViewController(controller, animated: true, completion: nil)
                         
                     }
-                    
-                    
             }
-            
             
         }
         
-
-        
-        
-        
-        
     }
-    
-    
-    
-    
-    
-    
     
     override func viewDidLoad() {
         
         
-         youtubelink.placeholder = "https://www.youtube.com/watch?v="
+        youtubelink.placeholder = "https://www.youtube.com/watch?v="
         
+        youtubedes.text = "Description"
+        youtubedes.textColor = UIColor.lightGrayColor()
         
-       // youtubelink.placeholder = "You tube link"
-        youtubedes.placeholder = "Description"
+        youtubedes.becomeFirstResponder()
         
+        youtubedes.selectedTextRange = youtubedes.textRangeFromPosition(youtubedes.beginningOfDocument, toPosition: youtubedes.beginningOfDocument)
         
         homebtn.target = self.revealViewController()
         homebtn.action = Selector("revealToggle:")
         homebtn.image = IonIcons.imageWithIcon(ion_navicon_round, iconColor: UIColor.darkGrayColor(), iconSize: 30, imageSize: CGSize(width: 30, height: 30))
         
-
-        
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
-           self.navigationController?.title = "You Tube Link"
+           self.navigationController?.title = "YouTube Link"
         
         
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -178,7 +146,6 @@ class UploadVideoYoutube:UIViewController{
             print("user name   in myvideo controlleer drawer ")
             
             print(name)
-            //  username.text = name
         }
         
         if let memberid = defaults.stringForKey("MEMBERID")
@@ -189,18 +156,41 @@ class UploadVideoYoutube:UIViewController{
             print(memberid)
             
             memberidvideo = memberid
-            
-            //  getList(memberid)
-            
-            
-            // username.text = name
         }
         
         setBorderTxt()
-        
-
     }
     
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        
+        // Combine the textView text and the replacement text to
+        // create the updated text string
+        let currentText:NSString = youtubedes.text
+        let updatedText = currentText.stringByReplacingCharactersInRange(range, withString:text)
+        
+        // If updated text view will be empty, add the placeholder
+        // and set the cursor to the beginning of the text view
+        if updatedText.isEmpty {
+            
+            youtubedes.text = "Description"
+            youtubedes.textColor = UIColor.lightGrayColor()
+            
+            youtubedes.selectedTextRange = youtubedes.textRangeFromPosition(youtubedes.beginningOfDocument, toPosition: youtubedes.beginningOfDocument)
+            
+            return false
+        }
+            
+            // Else if the text view's placeholder is showing and the
+            // length of the replacement string is greater than 0, clear
+            // the text view and set its color to black to prepare for
+            // the user's entry
+        else if youtubedes.textColor == UIColor.lightGrayColor() && !youtubedes.text.isEmpty {
+            textView.text = nil
+            textView.textColor = UIColor.blackColor()
+        }
+        
+        return true
+    }
     
     func setBorderTxt()
     {
@@ -217,16 +207,7 @@ class UploadVideoYoutube:UIViewController{
             .CGColor
         youtubedes.layer.cornerRadius = 14.0
         
-        
-
-   
         uploadbtn.layer.cornerRadius = 8.0
-        
-        
-        
-        
-        
-        
     }
 
     func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
@@ -236,9 +217,4 @@ class UploadVideoYoutube:UIViewController{
         
         return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
     }
-    
-    
-    
-    
-    
 }
