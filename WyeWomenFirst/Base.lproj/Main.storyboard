@@ -572,8 +572,8 @@
                                                     <color key="textColor" red="0.99494949489999995" green="0.99494949489999995" blue="0.99494949489999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Uploadutube.png" translatesAutoresizingMaskIntoConstraints="NO" id="hCy-D4-eyx">
-                                                    <rect key="frame" x="30" y="16" width="39" height="39"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="youtube.png" translatesAutoresizingMaskIntoConstraints="NO" id="hCy-D4-eyx">
+                                                    <rect key="frame" x="26" y="16" width="39" height="39"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1278,7 +1278,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aq-iO-XTg" customClass="CustomTextField" customModule="WomenWomenFirst" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aq-iO-XTg" customClass="CustomTextField" customModule="WomenWomenFirst" customModuleProvider="target">
                                 <rect key="frame" x="57" y="82" width="300" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="NCX-yA-a1k"/>
@@ -2156,7 +2156,6 @@
     </scenes>
     <resources>
         <image name="Upload.png" width="152" height="152"/>
-        <image name="Uploadutube.png" width="152" height="152"/>
         <image name="download.png" width="40" height="40"/>
         <image name="editprofile.png" width="152" height="152"/>
         <image name="feed.png" width="152" height="152"/>
@@ -2164,9 +2163,10 @@
         <image name="myvideo.png" width="152" height="152"/>
         <image name="user.jpg" width="80" height="80"/>
         <image name="uservideo.png" width="152" height="152"/>
+        <image name="youtube.png" width="152" height="152"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ciQ-fW-bU2"/>
-        <segue reference="VPu-bi-gL8"/>
+        <segue reference="9Dx-QL-jtZ"/>
     </inferredMetricsTieBreakers>
 </document>

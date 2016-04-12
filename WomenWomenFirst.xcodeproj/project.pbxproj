@@ -85,6 +85,7 @@
 		AEE132D51C33E43B0016CD06 /* googleplus.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE132D21C33E43B0016CD06 /* googleplus.png */; };
 		F6540F731CB6E5BA00D3C899 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F6540F721CB6E5BA00D3C899 /* Podfile */; };
 		F6540F7A1CB6E9F400D3C899 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = F6540F791CB6E9F400D3C899 /* facebook.png */; };
+		F69357151CBCFEF2008956B1 /* youtube.png in Resources */ = {isa = PBXBuildFile; fileRef = F69357141CBCFEF2008956B1 /* youtube.png */; };
 		F6C01CB01CBAD15A0092C3D8 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = F6C01CAF1CBAD15A0092C3D8 /* splash.png */; };
 		F6F6DC251CBC2A7100C2CB46 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6DC241CBC2A7100C2CB46 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
@@ -236,6 +237,7 @@
 		AEE132D21C33E43B0016CD06 /* googleplus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = googleplus.png; sourceTree = "<group>"; };
 		F6540F721CB6E5BA00D3C899 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F6540F791CB6E9F400D3C899 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		F69357141CBCFEF2008956B1 /* youtube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube.png; sourceTree = "<group>"; };
 		F6C01CAF1CBAD15A0092C3D8 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		F6F6DC241CBC2A7100C2CB46 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -291,6 +293,7 @@
 		AE617E091C088B3F00206A49 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F69357141CBCFEF2008956B1 /* youtube.png */,
 				F6C01CAF1CBAD15A0092C3D8 /* splash.png */,
 				F6540F791CB6E9F400D3C899 /* facebook.png */,
 				AEDE79851C3D416800860637 /* user.jpg */,
@@ -590,6 +593,7 @@
 				AE8057611C15AE0500A02F2F /* download.png in Resources */,
 				AE7D625B1C0DCFC200CA82F4 /* myvideo.png in Resources */,
 				AE65448A1C12EFCD0094D4FA /* feed.png in Resources */,
+				F69357151CBCFEF2008956B1 /* youtube.png in Resources */,
 				AE768EC31C107E33000E6634 /* biceps1.png in Resources */,
 				AE8DD7E51C37A67000CB0265 /* TwitterKitResources.bundle in Resources */,
 				AEE132D51C33E43B0016CD06 /* googleplus.png in Resources */,

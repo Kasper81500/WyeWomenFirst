@@ -57,8 +57,6 @@ class UploadVideoYoutube:UIViewController, UITextViewDelegate{
             self.presentViewController(controller, animated: true, completion: nil)
         }
         
-        
-        
         if(headingval.isEmpty || category.isEmpty || filedesc.isEmpty || filedesc == "Description")
         {
             let controller: UIAlertController = UIAlertController(title: "Enter Values", message: "Do not left empty Fields", preferredStyle: .Alert)
@@ -119,7 +117,6 @@ class UploadVideoYoutube:UIViewController, UITextViewDelegate{
     
     override func viewDidLoad() {
         
-        
         youtubelink.placeholder = "https://www.youtube.com/watch?v="
         
         youtubedes.text = "Description"
@@ -143,7 +140,7 @@ class UploadVideoYoutube:UIViewController, UITextViewDelegate{
         if let name = defaults.stringForKey("USERNAME")
         {
             
-            print("user name   in myvideo controlleer drawer ")
+            print("user name in myvideo controlleer drawer ")
             
             print(name)
         }
@@ -199,8 +196,6 @@ class UploadVideoYoutube:UIViewController, UITextViewDelegate{
         youtubelink.layer.borderColor = UIColorFromHex(0x055c8b,alpha:0.8)
             .CGColor
         youtubelink.layer.cornerRadius = 12.0
-        
-        
         
         youtubedes.layer.borderWidth = 2
         youtubedes.layer.borderColor = UIColorFromHex(0x0d7ab5,alpha:0.8)
