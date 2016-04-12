@@ -83,7 +83,6 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         
        // self.tableview.rowHeight = 150
       //  self.tableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "CellVideo")
-        
      
        progressBarView()
         
@@ -322,12 +321,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         
         let URLRequest = NSMutableURLRequest(URL: url!)
         URLRequest.cachePolicy = .ReturnCacheDataElseLoad
-        URLRequest.timeoutInterval = 100
-        
-
-        
-        
-        
+        URLRequest.timeoutInterval = 100        
         
         Alamofire.request(.POST, URLRequest,  encoding: .JSON)
             .responseJSON { response in
