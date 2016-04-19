@@ -36,10 +36,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
     
     var membername = [String]()
     var memberimage = [String]()
-    
-    
-    
-   // var cell:UITableViewCell
+   
 
     @IBOutlet var searchview: UISearchBar!
     @IBOutlet var backbtn: UIBarButtonItem!
@@ -47,17 +44,12 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
     
     var cell:UITableViewCell?
     
-    
-   // let url = NSURL(string:"http://applehotelbooking.com/webapi/Service1.svc/GetAllUserVideolist/")
-    
-   let url = NSURL(string:"http://service.womenwomenfirst.com/Service1.svc/GetAllUserVideolist/")
-    
+    var pageIndex : Int = 1
+    var isMoreVideoAvailable : Bool = true;
+    var isDownloadingVideo : Bool = false;
     
     
     override func viewDidLoad() {
-        
-        
-     //   print("This is  MyVideo view Controller ")
         
         getList()
         
@@ -69,7 +61,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         
         resultSearchController = UISearchController(searchResultsController: nil)
         resultSearchController.searchResultsUpdater = self
-           resultSearchController.dimsBackgroundDuringPresentation = false
+        resultSearchController.dimsBackgroundDuringPresentation = false
         resultSearchController.searchBar.placeholder = "Search here..."
        // resultSearchController.searchBar.delegate = self
         // resultSearchController.searchBar.sizeToFit()
@@ -88,11 +80,8 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         
     }
     
-    
-    
     func progressBarView()
     {
-        
         indicator  = UIActivityIndicatorView  (activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         indicator.color = UIColor .blackColor()
         indicator.frame = CGRectMake(0.0, 0.0, 60.0, 60.0)
@@ -100,16 +89,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         self.view.addSubview(indicator)
         indicator.bringSubviewToFront(self.view)
         indicator.startAnimating()
-        
-        
     }
-
-    
-    
-    
-    
-    
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -123,11 +103,6 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
          //   let nib = UINib(nibName: "VideoCell", bundle: nil)
            // tableview.registerNib(nib, forCellReuseIdentifier: "CellVideo")
             
-            
-            
-            
-            
-          
             tableview.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "CellVideo")
             cell = VideoCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "CellVideo")
             cell = tableview.dequeueReusableCellWithIdentifier("CellVideo") as? VideoCell
@@ -139,7 +114,6 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         
         
         if (self.resultSearchController.active) {
-            
           //  print("result for Search  ")
             cell!.videoname.text = arrRes[indexPath.row]
             cell!.videodesc.text = arrDescription[indexPath.row]
@@ -150,14 +124,12 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
             
         else
         {
-            
             print(" result all ")
             cell!.videoname.text = arrRes[indexPath.row]
             cell!.videodesc.text = arrDescription[indexPath.row]
             cell!.videodate.text = datetime[indexPath.row]
             cell!.categoryname.text = categoryname[indexPath.row]
             cell!.membername.text = membername[indexPath.row]
-            
         }
         
         
@@ -167,13 +139,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         cell!.cellview.layer.borderColor = UIColor.grayColor().CGColor
         cell!.cellview.layer.borderWidth = 0.5
         
-
-        
-        
-        
-        
         if let url = NSURL(string: memberimage[indexPath.row]) {
-            
             
             let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) -> Void in
                 //			println(self)
@@ -187,12 +153,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
             cell!.memberimage.layer.borderColor = UIColor.grayColor().CGColor
             cell!.memberimage.layer.cornerRadius = cell!.memberimage.frame.width / 2
             cell!.memberimage.clipsToBounds = true
-
         }
-
-        
-        
-        
         
         if let url = NSURL(string: arrPath[indexPath.row]) {
             
@@ -204,20 +165,9 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
             
             
             cell!.imagevideo.sd_setImageWithURL(url, completed: block)
-            
-
-            
-  
-            
-            
         }
         
-        
-        
         return cell!
-        
-        
-        
     }
     
     
@@ -227,11 +177,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         return 160
     }
     
-
-    
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         
         if (self.resultSearchController.active) {
             return self.filteredTableData.count
@@ -239,53 +185,25 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         else {
             return self.arrRes.count
         }
-        
-        
     }
-    
-    
-    
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         self.tableview.separatorColor = UIColor.clearColor()
         
-        
-       // let cell = tableview.dequeueReusableCellWithIdentifier("CellVideo") as? VideoCell
-       
-        
-        /*
-      
-         while ( whiteRoundedView.subviews.count > 0)
-         {
-        
-            for whiteRoundedView in self.view.subviews {
-                
-                print("come inside ")
-                whiteRoundedView.removeFromSuperview()
-            }
+        if(indexPath.row == self.arrRes.count - 1){
+            getMoreList();
         }
-            */
-
-        
-        
-        
-        
     }
 
     
     func  updateSearchResultsForSearchController(searchController: UISearchController) {
-        
-        
         
         self.filteredTableData.removeAll(keepCapacity: false)
         let searchpredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
         let  array = (self.categoryname as NSArray).filteredArrayUsingPredicate(searchpredicate)
         self.filteredTableData = array as! [String]
         self.tableview.reloadData()
-        
-        
-        
     }
 
     
@@ -313,7 +231,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
       
         //let url = NSURL(string:"http://applehotelbooking.com/webapi/Service1.svc/GetAllUserVideolist/")
         
-          let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/GetAllUserVideolist/")
+          let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/GetAllUserVideolist/200/1")
         
        //  let url = NSURL(string:"http://service.womenwomenfirst.com/Service1.svc/GetAllUserVideolist/")
          // print(url)
@@ -390,12 +308,6 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
                             let memberimage = object["MemberImage"].stringValue
                             
                             // print(memberimage)
-
-                            
-                            
-                            
-                            
-                            
                             
                             self.arrRes.append(heading)
                             self.arrDescription.append(description)
@@ -406,30 +318,103 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
                             self.videofilepath.append(videofilepath)
                             self.membername.append(membername)
                             self.memberimage.append(memberimage)
-                            
-
-                            
-                            
-                            
                         }
+                        
                         dispatch_async(dispatch_get_main_queue()) {
                             self.tableview.reloadData()
                             self.indicator.stopAnimating()
                             self.indicator.willRemoveSubview(self.indicator)
                         }
                         
-                        
                     }
-                    
-                    
-                    
-                    
                 }
         }
     }
-    
+    func getMoreList()
+    {
+        if !isMoreVideoAvailable || isDownloadingVideo {
+            return;
+        }
+        
+        isDownloadingVideo = true
+        
+        pageIndex += 1
+        
+        let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/GetAllUserVideolist/200/" + String(pageIndex))
+        let URLRequest = NSMutableURLRequest(URL: url!)
 
-    
+        URLRequest.cachePolicy = .ReturnCacheDataElseLoad
+        URLRequest.timeoutInterval = 100
+        
+        Alamofire.request(.POST, URLRequest,  encoding: .JSON)
+            .responseJSON { response in
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    print("error calling GET on /posts/1")
+                    print(response.result.error!)
+                    self.displayMessage("Some Network Issue")
+                    self.isDownloadingVideo = false
+                    return
+                }
+                
+                self.isDownloadingVideo = false
+                
+                if let value: AnyObject = response.result.value {
+                    // handle the results as JSON, without a bunch of nested if loops
+                    let swiftyJsonVar = JSON(value)
+                    
+                    let results = swiftyJsonVar["GetAllUserVideolistResult"]
+                    
+                    let messageType = results["Message"].stringValue
+                   
+                    if messageType == "novideo" {
+                        self.isMoreVideoAvailable = false
+                    
+                    }else{
+                        let results2 = results["objvideocategory"]
+                    
+                        for (_, object) in results2 {
+                            
+                            let categoryname =  object["Category"].stringValue
+                            let videolist = object["objResult"]
+                            
+                            
+                            for (_, object) in videolist {
+                                
+                                let description = object["Description"].stringValue
+                                let heading =  object["Heading"].stringValue
+                                let uploadfile = object["UploadFileID"].stringValue
+                                let uploaddate =  object["uploadededDate"].stringValue
+                                
+                                let videothumb =  object["videoThumb"].stringValue
+                                let videofilepath = object["FilePath"].stringValue
+                                
+                                let membername = object["MemberName"].stringValue
+                                
+                                let memberimage = object["MemberImage"].stringValue
+                                
+                                self.arrRes.append(heading)
+                                self.arrDescription.append(description)
+                                self.arrPath.append(videothumb)
+                                self.datetime.append(uploaddate)
+                                self.categoryname.append(categoryname)
+                                self.uploadedFile.append(uploadfile)
+                                self.videofilepath.append(videofilepath)
+                                self.membername.append(membername)
+                                self.memberimage.append(memberimage)
+                            }
+                            
+                            dispatch_async(dispatch_get_main_queue()) {
+                                self.tableview.reloadData()
+                                self.indicator.stopAnimating()
+                                self.indicator.willRemoveSubview(self.indicator)
+                            }
+                            
+                        }
+                    }
+                }
+        }
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
       //  print("____________________________________________")
@@ -448,18 +433,11 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         //   print("++++++++++++++++++++++++++++++++++")
          //  print(uploadedFile[indexPathval.row])
         //   print("++++++++++++++++++++++++++++++++++")
-            destination.titlefinalvalue = uploadedFile[indexPathval.row]
-            
+            destination.titlefinalvalue = uploadedFile[indexPathval.row]            
             
         }
         
     }
-
-    
-    
-    
-    
-    
     
     func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
         let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
@@ -467,9 +445,5 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         let blue = CGFloat(rgbValue & 0xFF)/256.0
         return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
     }
-
-    
-    
-    
     
 }

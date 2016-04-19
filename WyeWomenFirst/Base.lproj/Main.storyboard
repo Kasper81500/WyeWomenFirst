@@ -355,7 +355,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="384" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -411,7 +411,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="noM-B4-5i4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2588.5" y="-2004.5"/>
+            <point key="canvasLocation" x="2666.5" y="-2053.5"/>
         </scene>
         <!--Left Drawer Controller-->
         <scene sceneID="NYo-zR-Yn6">
@@ -2167,6 +2167,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ciQ-fW-bU2"/>
-        <segue reference="9Dx-QL-jtZ"/>
+        <segue reference="VPu-bi-gL8"/>
     </inferredMetricsTieBreakers>
 </document>

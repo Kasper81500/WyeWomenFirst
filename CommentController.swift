@@ -50,11 +50,7 @@ class CommentController:UIViewController
         
         commentTxt.layer.borderColor = UIColorFromHex(0x0d7ab5,alpha:0.8).CGColor
         commentTxt.layer.cornerRadius = 10.0
-        
-
-        
-        
-        
+      
         
         let gradientLayer = CAGradientLayer()
         
@@ -74,20 +70,17 @@ class CommentController:UIViewController
         // gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
         
         
-        gradientLayer.colors = [color1, color2]
+       gradientLayer.colors = [color1, color2]
         
         
         // 4
-        gradientLayer.locations = [0.0,  1.2]
+       gradientLayer.locations = [0.0,  1.2]
         
         // 5
         
-        self.view.layer.addSublayer(gradientLayer)
-        
+       self.view.layer.addSublayer(gradientLayer)
         
        print(commentsegue)
-        
-        
         
     }
     

@@ -48,6 +48,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     var currentCount:Int = 0
     var maxCount:Int = 20
     var uploadProgress:Float = 0
+
     
     override func viewDidLoad() {
         
@@ -56,7 +57,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     }
     
     override func viewWillAppear(animated: Bool) {
-       
+        
         getVideoList()
         
         currentCount = 0
@@ -194,7 +195,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     // -----  get list ------ //
     func getVideoList()
     {
-        let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/GetAllUserVideolist/")
+        let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/GetAllUserVideolist/10/1")
         let URLRequest = NSMutableURLRequest(URL: url!)
         URLRequest.cachePolicy = .ReturnCacheDataElseLoad
         URLRequest.timeoutInterval = 100
@@ -280,16 +281,8 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         self.presentViewController(alertController, animated: true, completion:nil)
         
     }
-
     
-    
-    
-    
-    
-    
-     // --------------------------Gradient Color-------------------------------- //
-    
-    
+    // --------------------------Gradient Color-------------------------------- //
     func gradientColor()
     {
         

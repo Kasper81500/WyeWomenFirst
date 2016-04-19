@@ -23,17 +23,12 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
        
     @IBOutlet var backbutton: UIBarButtonItem!
       var comments : String = ""
-    
-    
    
     @IBOutlet var videodesc: UILabel!
     
-    
-  //  let url = NSURL(string:"http://service.womenwomenfirst.com/Service1.svc/GetUploadedVideoData/32")
-    
     let playerController:AVPlayerViewController = AVPlayerViewController()
     
-    var titlefinalvalue:String=""
+    var titlefinalvalue:String = ""
     
     
     var customView:UITextView!
@@ -55,23 +50,16 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
     var player:AVPlayer!
     
     var refreshControl = UIRefreshControl()
-
     
     @IBOutlet var commentbtn: UIButton!
     
-    
     @IBOutlet var tableview: UITableView!
     
-    
     var finalmemberid:String = ""
-    
 
     var  filenamedownload:String = ""
     
-    
     var   tap: UITapGestureRecognizer!
-    
-    //let youtubeUrl = "https://www.youtube.com/embed/5rexd-5p3fQ"
     
     var youtubeURL:String = "https://www.youtube.com/embed/b9PE22dBk5E"
     var videotype:String = ""
@@ -440,9 +428,6 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
                         
                         self.commentimage.append(commentedpic)
                         
-                     
-
-                      
                        // print("Comment text----:>>>"+commenttext)
                         
                         
@@ -460,21 +445,10 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
                         
                         self.tableview.reloadData()
                         //  self.refreshControl.endRefreshing()
-                        
-                        
-                        
                     }
-                    
-                    
-                    
-                    
                 }
         }
     }
-
-    
-  
-    
     
     @IBAction func commentSend(sender: AnyObject) {
         
@@ -537,34 +511,16 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
                     
                 {
                     self.displayMessage("Successfully commented")
-                    //self.getList()
-                    
-                    /*
-                    self.refreshControl.addTarget(self, action: Selector("refreshData"), forControlEvents: UIControlEvents.ValueChanged)
-                    //tableview is your UITAbleView in UIViewController
-                    self.tableview.addSubview(self.refreshControl)
-                    */
-                    
                 }
                 
-                
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.tableview.reloadData()
-                      self.refreshControl.endRefreshing()
+                    self.commentDataReloading()
+//                    self.tableview.reloadData()
+//                    self.refreshControl.endRefreshing()
                     
                 }
                 
             }
-
-            
-            
-            
-            
-            
-            
-            
-            
-            //
             
         })
         
@@ -574,11 +530,16 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
         alertController.addAction(cancelAction)
         
         self.presentViewController(alertController, animated: true, completion:{})
-
-        
-        
     }
     
+    func commentDataReloading(){
+        self.arrCommentBy.removeAll()
+        self.arrCommentdate.removeAll()
+        self.arrComment.removeAll()
+        self.arrCommentId.removeAll()
+        self.commentimage.removeAll()
+        self.getList()
+    }
     
     func textView(customView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         let newText = (customView.text as NSString).stringByReplacingCharactersInRange(range, withString: text)
@@ -590,9 +551,6 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
         //  print(customView.text); //the textView parameter is the textView where text was changed
     }
     
-
-    
-    
     func textFieldShouldReturn(customView: UITextView) -> Bool {   //delegate method
         
         
@@ -600,7 +558,6 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
         //   print("call me return ")
         
         customView.resignFirstResponder()
-        
         
         return true
     }

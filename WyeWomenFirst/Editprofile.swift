@@ -338,8 +338,10 @@ class Editprofile :UIViewController,UIImagePickerControllerDelegate,UINavigation
         
         let finalphone:String = phone.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
         
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let userId :String = prefs.stringForKey("MEMBERID")!
         
-        let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/Updatemember/1/"+finalname+"/"+finalsurname+"/"+email+"/"+finalcounty+"/"+finalcountry+"/"+finaldistrict+"/"+finalcity+"/"+finalterritory+"/"+candidate+"/"+finalphone+"/PPS/PA")
+        let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/Updatemember/"+userId+"/"+finalname+"/"+finalsurname+"/"+email+"/"+finalcounty+"/"+finalcountry+"/"+finaldistrict+"/"+finalcity+"/"+finalterritory+"/"+candidate+"/"+finalphone+"/PPS/PA")
         
             Alamofire.request(.POST, url!,  encoding: .JSON)
             .responseJSON { response in

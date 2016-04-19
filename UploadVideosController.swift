@@ -331,22 +331,19 @@ class UploadVideosController:UIViewController , UIImagePickerControllerDelegate,
           //  let finalfilename:String = filename.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
             
             
-            let finalcategory:String = category.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
-            
-
-            let finaldescription:String = filedesc.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
-            
-            
-            let finalfilevalue = filename.stringByReplacingOccurrencesOfString(" ", withString: "_")
-            
+        let finalcategory:String = category.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
         
+
+        let finaldescription:String = filedesc.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
+        
+        
+        let finalfilevalue = filename.stringByReplacingOccurrencesOfString(" ", withString: "_")
+        
+    
+        
+         print("final file name upload ")
+         print(finalfilevalue)
             
-             print("final file name upload ")
-             print(finalfilevalue)
-            
-            
-                  //http://applehotelbooking.com/webapi/FileUploadService.svc/UploadFile
-                  //
                     
         isUploadingVideo = true;
         self.videodone.setTitle("Cancel", forState: UIControlState.Normal)
