@@ -874,21 +874,13 @@
                         <color key="backgroundColor" red="0.90179943650000005" green="0.90179943650000005" blue="0.90179943650000005" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.70839251893939392" green="0.69316837546248078" blue="0.58403268416957443" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.35376043235898541" green="0.19625738849117358" blue="0.70839251893939392" alpha="1" colorSpace="calibratedRGB"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="7iF-NV-yXf">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="5S5-sN-zSS" id="Hmy-pC-suj"/>
-                            </connections>
-                        </searchBar>
                         <view key="tableFooterView" contentMode="scaleToFill" id="WWQ-RB-1Zd" userLabel="footer">
-                            <rect key="frame" x="0.0" y="710" width="414" height="6"/>
+                            <rect key="frame" x="0.0" y="178" width="414" height="6"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellVideo" rowHeight="150" id="zwe-0U-dv1" customClass="VideoCell" customModule="WomenWomenFirst" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zwe-0U-dv1" id="FNF-b6-yft">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
@@ -1016,7 +1008,6 @@
                     <connections>
                         <outlet property="backbtn" destination="IgC-OW-KFe" id="w3F-Ml-Dwu"/>
                         <outlet property="searchDisplayController" destination="g1E-O8-P70" id="AVQ-0a-5cQ"/>
-                        <outlet property="searchview" destination="7iF-NV-yXf" id="FQF-C6-fIt"/>
                         <outlet property="tableview" destination="zqp-FN-j1p" id="ppa-ac-8AC"/>
                     </connections>
                 </tableViewController>
@@ -1030,7 +1021,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3923" y="-1899"/>
+            <point key="canvasLocation" x="3705" y="-1899"/>
         </scene>
         <!--Video Play Controller-->
         <scene sceneID="eHk-of-r2M">
@@ -2033,7 +2024,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I1K-7W-kGi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3433.5" y="-1925.5"/>
+            <point key="canvasLocation" x="3254.5" y="-1933.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GKE-yl-rGh">

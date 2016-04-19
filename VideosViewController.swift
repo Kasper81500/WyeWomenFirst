@@ -30,7 +30,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
     
     var whiteRoundedView : UIView!
     var filteredTableData = [String]()
-    var resultSearchController = UISearchController()
+    //var resultSearchController = UISearchController()
     
     
     
@@ -59,25 +59,17 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         
         backbtn.image = IonIcons.imageWithIcon(ion_navicon_round, iconColor: UIColor.darkGrayColor(), iconSize: 30, imageSize: CGSize(width: 30, height: 30))
         
-        resultSearchController = UISearchController(searchResultsController: nil)
-        resultSearchController.searchResultsUpdater = self
-        resultSearchController.dimsBackgroundDuringPresentation = false
-        resultSearchController.searchBar.placeholder = "Search here..."
-       // resultSearchController.searchBar.delegate = self
-        // resultSearchController.searchBar.sizeToFit()
+//        resultSearchController = UISearchController(searchResultsController: nil)
+//        resultSearchController.searchResultsUpdater = self
+//        resultSearchController.dimsBackgroundDuringPresentation = false
+//        resultSearchController.searchBar.placeholder = "Search here..."
+//        resultSearchController.hidesNavigationBarDuringPresentation = false
+//        
+//        // Place the search bar view to the tableview headerview.
+//        tableview.tableHeaderView = resultSearchController.searchBar
         
         
-        resultSearchController.hidesNavigationBarDuringPresentation = false
-        // Place the search bar view to the tableview headerview.
-        tableview.tableHeaderView = resultSearchController.searchBar
-        
-      //  self.navigationItem.titleView = resultSearchController.searchBar
-        
-       // self.tableview.rowHeight = 150
-      //  self.tableView.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "CellVideo")
-     
        progressBarView()
-        
     }
     
     func progressBarView()
@@ -113,24 +105,24 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         }
         
         
-        if (self.resultSearchController.active) {
-          //  print("result for Search  ")
-            cell!.videoname.text = arrRes[indexPath.row]
-            cell!.videodesc.text = arrDescription[indexPath.row]
-            cell!.videodate.text = datetime[indexPath.row]
-            cell!.categoryname.text = filteredTableData[indexPath.row]
-            cell!.membername.text = membername[indexPath.row]
-        }
-            
-        else
-        {
+//        if (self.resultSearchController.active) {
+//          //  print("result for Search  ")
+//            cell!.videoname.text = arrRes[indexPath.row]
+//            cell!.videodesc.text = arrDescription[indexPath.row]
+//            cell!.videodate.text = datetime[indexPath.row]
+//            cell!.categoryname.text = filteredTableData[indexPath.row]
+//            cell!.membername.text = membername[indexPath.row]
+//        }
+//            
+//        else
+//        {
             print(" result all ")
             cell!.videoname.text = arrRes[indexPath.row]
             cell!.videodesc.text = arrDescription[indexPath.row]
             cell!.videodate.text = datetime[indexPath.row]
             cell!.categoryname.text = categoryname[indexPath.row]
             cell!.membername.text = membername[indexPath.row]
-        }
+//        }
         
         
         cell!.videodesc.textColor = UIColorFromHex(0x8f8f8f,alpha:1)
@@ -179,12 +171,12 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if (self.resultSearchController.active) {
-            return self.filteredTableData.count
-        }
-        else {
+//        if (self.resultSearchController.active) {
+//            return self.filteredTableData.count
+//        }
+//        else {
             return self.arrRes.count
-        }
+//        }
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

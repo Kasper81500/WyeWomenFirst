@@ -135,40 +135,40 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
        else
        {
             
-        for var index=0 ; index<videosimageslider.count ; index++
-        {
-            if let url = NSURL(string: videosimageslider[index]) {
-                if let data = NSData(contentsOfURL: url){
-                    if let imageUrl = UIImage(data: data) {
-                        
-                        let  myimageview:UIImageView = UIImageView()
-                        
-                        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageUrl: NSURL!) -> Void in
+            for var index=0 ; index<videosimageslider.count ; index++
+            {
+                if let url = NSURL(string: videosimageslider[index]) {
+                    if let data = NSData(contentsOfURL: url){
+                        if let imageUrl = UIImage(data: data) {
+                            
+                            let  myimageview:UIImageView = UIImageView()
+                            
+                            let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageUrl: NSURL!) -> Void in
+                            }
+                            
+                            myimageview.sd_setImageWithURL(url, completed: block)
+                            
+                            myimageview.frame.size.width = imagewidth
+                            myimageview.frame.size.height = imageheight
+                            myimageview.contentMode = UIViewContentMode.ScaleToFill
+                            myimageview.frame.origin.x = xscrollpos
+                            myimageview.frame.origin.y = 5
+                            
+                            scrollview!.addSubview(myimageview)
+                            
+                            xscrollpos += imagewidth
+                            
+                            scrollviewcontentSize += imagewidth
+                            
+                            scrollview.contentSize = CGSize(width: scrollviewcontentSize, height: imageheight)
                         }
-                        
-                        myimageview.sd_setImageWithURL(url, completed: block)
-                        
-                        myimageview.frame.size.width = imagewidth
-                        myimageview.frame.size.height = imageheight
-                        myimageview.contentMode = UIViewContentMode.ScaleToFill
-                        myimageview.frame.origin.x = xscrollpos
-                        myimageview.frame.origin.y = 5
-                        
-                        scrollview!.addSubview(myimageview)
-                        
-                        xscrollpos += imagewidth
-                        
-                        scrollviewcontentSize += imagewidth
-                        
-                        scrollview.contentSize = CGSize(width: scrollviewcontentSize, height: imageheight)
                     }
-                }
-            }            
-        }
-       
-        scrollingTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "newStartScrolling", userInfo: nil, repeats: true)
-        
-        scrollingTimer.fire()
+                }            
+            }
+           
+            scrollingTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "newStartScrolling", userInfo: nil, repeats: true)
+            
+            scrollingTimer.fire()
         
         }
     }
