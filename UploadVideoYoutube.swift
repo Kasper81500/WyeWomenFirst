@@ -35,6 +35,8 @@ class UploadVideoYoutube:UIViewController, UITextViewDelegate{
     
     var headingval:String = ""
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBAction func sendUrl(sender: AnyObject) {
         
          let url = NSURL(string:"http://www.womenwomenfirst.com/service/FileUploadService.svc/UploadFileUrl/")
@@ -48,7 +50,7 @@ class UploadVideoYoutube:UIViewController, UITextViewDelegate{
         
         if let validURL: NSURL = NSURL(string: stringWithPossibleURL) {
             // Successfully constructed an NSURL; open it
-            UIApplication.sharedApplication().openURL(validURL)
+            //UIApplication.sharedApplication().openURL(validURL)
         } else {
             // Initialization failed; alert the user
             let controller: UIAlertController = UIAlertController(title: "Invalid URL", message: "Please try again.", preferredStyle: .Alert)
@@ -66,6 +68,7 @@ class UploadVideoYoutube:UIViewController, UITextViewDelegate{
         }
         else
         {
+            activityIndicator.startAnimating()
             
             let headingvalfinal:String = headingval.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
             let finaldesc:String = filedesc.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
@@ -85,14 +88,16 @@ class UploadVideoYoutube:UIViewController, UITextViewDelegate{
             
             Alamofire.request(request)
                 .responseJSON { response in
+                    self.activityIndicator.stopAnimating()
                     // do whatever you want here
-                    
                     switch response.result {
                     case .Success(let data):
+                        
                         let json = JSON(data).stringValue
                         
                         if(json == "success")
                         {
+                            
                             let controller: UIAlertController = UIAlertController(title: "URL UPLOADED", message: "Url successfully uploaded", preferredStyle: .Alert)
                             controller.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
                             
@@ -107,7 +112,6 @@ class UploadVideoYoutube:UIViewController, UITextViewDelegate{
                         controller.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
                         
                         self.presentViewController(controller, animated: true, completion: nil)
-                        
                     }
             }
             
@@ -116,9 +120,10 @@ class UploadVideoYoutube:UIViewController, UITextViewDelegate{
     }
     
     override func viewDidLoad() {
+        activityIndicator.hidesWhenStopped = true
         
         youtubelink.placeholder = "https://www.youtube.com/watch?v="
-        
+        youtubelink.text = "https://www.youtube.com/watch?v="
         youtubedes.text = "Description"
         youtubedes.textColor = UIColor.lightGrayColor()
         

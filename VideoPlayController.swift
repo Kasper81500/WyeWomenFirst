@@ -68,40 +68,18 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
         
         videowebview.opaque = false
         
-        
         videowebview.backgroundColor = UIColor.clearColor()
-        
-        
-        /*
-        
-        videowebview.loadHTMLString("<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/5rexd-5p3fQ\" frameborder=\"0\" allowfullscreen></iframe>", baseURL: nil)
-        
-        */
-        
-        
         
         let defaults = NSUserDefaults.standardUserDefaults()
         if let name = defaults.stringForKey("USERNAME")
         {
-            
-          //  print("user name   in video play controlleer  ")
-            
-           // print(name)
-            //  username.text = name
+          print(name)
         }
         
         if let memberid = defaults.stringForKey("MEMBERID")
         {
-            
-           // print("Member id  in video play controller  ")
-            
-            finalmemberid = memberid
-            
-         //   print(memberid)
-            
+          finalmemberid = memberid
         }
-        
-        
         
         self.tableview.dataSource = self
         self.tableview.delegate = self
@@ -110,69 +88,32 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
         //tableview is your UITAbleView in UIViewController
         self.tableview.addSubview(refreshControl)
         
-        
-        
-        
         getList()
         
-        /*
-        
-        print("Destination ")
-        
-        print("==================================================")
-        
-        print(titlefinalvalue)
-        
-        print(filenamedownload)
-        
-        print("==================================================")
-        */
-        
-        // self.tableview.separatorColor = UIColor.clearColor()
-        
-        
-        
-        // commentbtn.backgroundColor = UIColorFromHex(0x454545,alpha:0.8)
         commentbtn.layer.cornerRadius = 12.0
         commentbtn.layer.borderWidth = 2
-        
-        //  commentbtn.layer.borderColor = UIColor.grayColor().CGColor
         commentbtn.layer.borderColor = UIColorFromHex(0x454545,alpha:0.8)
             .CGColor
         
        tap = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
-       //
-
-        
-        
     }
 
-    
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
     
-    
-    
     func refreshData()
     {
         getList()
-        
     }
 
-    
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CommentCell") as? CommentVideoCell
         
         if (indexPath.row < arrCommentId.count) {
-            
-            
             cell!.comment.text  = arrCommentBy[indexPath.row]
             cell!.commentperson.text  = arrComment[indexPath.row]
             cell!.commentdate.text = arrCommentdate[indexPath.row]
@@ -181,14 +122,11 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
             cell!.cellview.layer.borderColor = UIColor.grayColor().CGColor
             cell!.cellview.layer.borderWidth = 0.5
             
-            
             if let url = NSURL(string: commentimage[indexPath.row]) {
-                
                 
                 let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) -> Void in
                     //			println(self)
                 }
-                
                 
                 cell!.commetedpic.sd_setImageWithURL(url, completed: block)
                 cell!.commetedpic.layer.borderWidth = 1.0
@@ -196,28 +134,15 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
                 cell!.commetedpic.layer.borderColor = UIColor.grayColor().CGColor
                 cell!.commetedpic.layer.cornerRadius = cell!.commetedpic.frame.width / 2
                 cell!.commetedpic.clipsToBounds = true
-                
-                
-                
             }
-            
-            
-            
         }
         
-        
         return cell!
-        
-        
-        
     }
-    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return arrComment.count
-        
-        
     }
     
     func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
@@ -227,26 +152,13 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
         
         return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
     }
-
-    
-    
- 
-    
-    
     
     func getList()
     {
-        
-        
         if(titlefinalvalue.isEmpty)
         {
           //  displayMessage("Sorry Video Deleted")
         }
-        
-       /*
-        let url = NSURL(string:"http://applehotelbooking.com/webapi/Service1.svc/GetUploadedVideoData/"+titlefinalvalue)
-        */
-        
         
         let url = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/GetUploadedVideoData/"+titlefinalvalue)
         
@@ -254,14 +166,8 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
         URLRequest.cachePolicy = .ReturnCacheDataElseLoad
         URLRequest.timeoutInterval = 100
         
-
-        
-        
-         print("Destination url ")
+        print("Destination url ")
         print(url)
-        
-        
-        
         
         Alamofire.request(.POST, URLRequest,  encoding: .JSON)
             .responseJSON { response in
@@ -277,138 +183,62 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
                 if let value: AnyObject = response.result.value {
                     // handle the results as JSON, without a bunch of nested if loops
                     let swiftyJsonVar = JSON(value)
-                    // print(swiftyJsonVar)
-                    
-                    
                     let results = swiftyJsonVar["GetUploadedVideoDataResult"]
-                    // print(results)
-                    
-                    
-                    // print(results)
-                    //  print(swiftyJsonVar.count)
-                    //    print("-------results1------")
-                    
                     let results1 = results["CommentResult"]
-                  //  let results2 = results["FileName"]
                     let results3 = results["FilePath"].stringValue
                     let results4 = results["Urltype"].stringValue
                     let results5 = results["Despcription"].stringValue
-
-                    
                     let results6 = results["Name"].stringValue
                     let results7 = results ["SurName"].stringValue
                     
                     self.usercompletename = "\(results6) \(results7)"
 
                     self.videotype = results4
-                   // self.videodescription = results5
                     
-                    self.videodesc.text = results5
+                    self.videodesc.text = results5.stringByRemovingPercentEncoding!
                     
+                    if !results3.isEmpty {
+                        self.youtubeURL = results3.stringByReplacingOccurrencesOfString("https://www.youtube.com/watch?v=", withString: "https://www.youtube.com/embed/")
+                    }
                     
                     print("File path url0000000000000000 "+results3);
-                    
-                    
                     
                     print("***************************")
                     print(self.usercompletename)
                     print("****************************")
+                    
                     self.navigationController?.title = self.usercompletename
-                    
-                
-                    
-                    
-                    // let results3 = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
-                    
-                    
-                  //  let resultcandidate = results["objMemberDetail"]
-                    // print("-----------+++++ -----")
-                    //   print(resultcandidate)
-                    
-                    /*
-                    let username1 = resultcandidate["Name"].stringValue
-                    let emailuser = resultcandidate["Email"].stringValue
-                    let cityuser = resultcandidate["City"].stringValue
-                    let countyuser = resultcandidate["County"].stringValue
-                    let countryuser = resultcandidate["Country"].stringValue
-                    
-                    */
-                    
-                    
-                    
-                    /*
-                    self.username.text = username1
-                    self.useremail.text = emailuser
-                    self.usercity.text = cityuser
-                    self.usercounty.text = countyuser
-                    self.usercountry.text = countryuser*/
-                    
-                    
                     
                     self.videourl = results3
                     
-                      print("video url load ")
-                    
                     if(self.videotype == "video")
                     {
-                      
-                        
-                     //   print("56565656565656565656565656565656566565")
                         print(self.videourl)
-
+                            
+                        let videoURL = NSURL(string: self.videourl)
+                        let screenWidth = self.view.frame.size.width
+                        let widthval = CGFloat(screenWidth / 2)-160
                         
-                     let videoURL = NSURL(string: self.videourl)
-                     let screenWidth = self.view.frame.size.width
-                  //   let size = 210
-                     let widthval = CGFloat(screenWidth / 2)-160
-                        
-                      //  print("oooeoeoeoeoeooeoeoeoeoeeoeoeooe")
-                       // print(widthval)
-                        
-                        
-                    self.player = AVPlayer(URL: videoURL!)
-                    self.playerController.player = self.player
-                    // let playerLayer = AVPlayerLayer(player: player)
-                    self.playerController.view.frame = CGRectMake(widthval, 80, 320, 220)
-                    self.playerController.showsPlaybackControls = true
-                   // self.playerController.view.center = self.view.center
-                        
+                        self.player = AVPlayer(URL: videoURL!)
+                        self.playerController.player = self.player
+                        //self.playerController.view.frame = CGRectMake(widthval, 80, 320, 220)
+                        self.playerController.view.frame = self.videowebview.frame
+                        self.playerController.showsPlaybackControls = true
                     
-                    self.addChildViewController(self.playerController)
-                    self.view.addSubview(self.playerController.view)
-                    self.playerController.didMoveToParentViewController(self)
-                    self.player.play()
-
+                        self.addChildViewController(self.playerController)
+                        self.view.addSubview(self.playerController.view)
+                        self.playerController.didMoveToParentViewController(self)
+                        self.player.play()
                     }
-                    
                     
                     if(self.videotype == "youtube")
                     {
-                        
-                        
                         print("This is you tube")
-                        
-                        
-                    //   self.youtubeURL =  self.videourl
-                     // let urlyoutube = NSURL(string: "https://www.youtube.com/watch?v=bp_U-ZAWNM0")
-       
-                      //  let request = NSURLRequest(URL: urlyoutube!)
-                        
-                        
-                        
-                       // self.videowebview.allowsInlineMediaPlayback = true
                         
                         self.videowebview.loadHTMLString("<iframe width=\"\(self.videowebview.frame.width)\" height=\"\(self.videowebview.frame.height)\" src=\"\(self.youtubeURL)?playsinline=1\" frameborder=\"0\" allowfullscreen></iframe>", baseURL: nil)
                         
-                         self.videowebview.allowsInlineMediaPlayback = true
-                        
+                        self.videowebview.allowsInlineMediaPlayback = true
                     }
-                    
-                    
-                    
-                    // let results4 = results["Filetype"]
-                    
-                    
                     
                     for (_, object) in results1 {
                         
@@ -416,10 +246,8 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
                         let commentdate = object["CommentDate"].stringValue
                         let commenttext = object["Commenttext"].stringValue
                         let commentid = object["CoomentID"].stringValue
-                        
                         let commentedpic = object["CommentUserImage"].stringValue
                         print(commentedpic)
-                        
                         
                         self.arrCommentBy.append(commentby)
                         self.arrCommentdate.append(commentdate)
@@ -427,24 +255,16 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
                         self.arrCommentId.append(commentid)
                         
                         self.commentimage.append(commentedpic)
-                        
-                       // print("Comment text----:>>>"+commenttext)
-                        
-                        
-                        
-                        
                     }
+                    
                     dispatch_async(dispatch_get_main_queue()) {
-                        
                         
                         if self.refreshControl.refreshing
                         {
                             self.refreshControl.endRefreshing()
                         }
                         
-                        
                         self.tableview.reloadData()
-                        //  self.refreshControl.endRefreshing()
                     }
                 }
         }
@@ -461,14 +281,9 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
         customView = UITextView(frame: rect)
         
         customView!.delegate = self
-        
-        
-        
         customView.backgroundColor = UIColor.clearColor()
         customView.font = UIFont(name: "Helvetica", size: 20)
-       // customView.addGestureRecognizer(tap)
-        
-        //  customView.backgroundColor = UIColor.greenColor()
+
         alertController.view.addSubview(customView)
         
         let somethingAction = UIAlertAction(title: "Comment ", style: UIAlertActionStyle.Default, handler: {(alert: UIAlertAction!) in print("something")
@@ -484,44 +299,19 @@ class VideoPlayController:UIViewController , UITableViewDelegate , UITableViewDa
             
             let newString = self.comments.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             
-            
             let finalcomment:String = newString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
             
-          //  http://service.womenwomenfirst.com/Service1.svc/PostComment
-            
-            
             let urlcomment = NSURL(string:"http://www.womenwomenfirst.com/service/Service1.svc/PostComment/"+self.finalmemberid+"/"+self.titlefinalvalue+"/"+finalcomment)
-            
-            /*
-            let urlcomment = NSURL(string:"http://applehotelbooking.com/webapi/Service1.svc/PostComment/"+self.finalmemberid+"/"+self.titlefinalvalue+"/"+finalcomment)
-            */
-            
             
             Alamofire.request(.POST, urlcomment!).responseJSON { (responseData) -> Void in
                 let swiftyJsonVar = JSON(responseData.result.value!)
                 
-            //    print(swiftyJsonVar)
-            //    print("-------------")
-                let results = swiftyJsonVar["PostCommentResult"]
-                
-             //   print(results)
-                
-                
-                if(results == "success")
-                    
-                {
-                    self.displayMessage("Successfully commented")
-                }
-                
+                let results = swiftyJsonVar["PostCommentResult"]                
+               
                 dispatch_async(dispatch_get_main_queue()) {
                     self.commentDataReloading()
-//                    self.tableview.reloadData()
-//                    self.refreshControl.endRefreshing()
-                    
                 }
-                
             }
-            
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(alert: UIAlertAction!) in print("cancel")})

@@ -233,7 +233,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                         
                         for (_, object) in videolist {
                             
-                            let description = object["Description"].stringValue
+                            let description = object["Description"].stringValue.stringByRemovingPercentEncoding!
                             let heading =  object["Heading"].stringValue
                             let uploadfile = object["UploadFileID"].stringValue
                             let uploaddate =  object["uploadededDate"].stringValue
