@@ -71,6 +71,7 @@ class UploadVideoYoutube:UIViewController, UITextViewDelegate{
             activityIndicator.startAnimating()
             
             let headingvalfinal:String = headingval.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
+            
             let finaldesc:String = filedesc.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
             
             let finalcate:String = category.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!

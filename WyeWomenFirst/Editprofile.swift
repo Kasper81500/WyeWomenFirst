@@ -32,7 +32,6 @@ class Editprofile :UIViewController,UIImagePickerControllerDelegate,UINavigation
     @IBOutlet var countryTxt: UITextField!
     @IBOutlet var districtTxt: UITextField!
     @IBOutlet var territoryTxt: UITextField!
-    @IBOutlet var candidateTxt: UITextField!
     @IBOutlet var phoneTxt: UITextField!
     
     var urlVideo :NSURL = NSURL()
@@ -208,7 +207,6 @@ class Editprofile :UIViewController,UIImagePickerControllerDelegate,UINavigation
         districtTxt.placeholder = "District"
         cityTxt.placeholder = "City"
         territoryTxt.placeholder = "Territory"
-        candidateTxt.placeholder = "Candidate"
         phoneTxt.placeholder = "Phone"
         
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -442,11 +440,6 @@ class Editprofile :UIViewController,UIImagePickerControllerDelegate,UINavigation
             .CGColor
         territoryTxt.layer.cornerRadius = 8.0
         
-        candidateTxt.layer.borderWidth = 2
-        candidateTxt.layer.borderColor = UIColorFromHex(0x0d7ab5,alpha:0.8)
-            .CGColor
-        candidateTxt.layer.cornerRadius = 8.0
-        
         phoneTxt.layer.borderWidth = 2
         phoneTxt.layer.borderColor = UIColorFromHex(0x0d7ab5,alpha:0.8)
             .CGColor
@@ -532,7 +525,6 @@ class Editprofile :UIViewController,UIImagePickerControllerDelegate,UINavigation
                             self.countryTxt.text = self.countyvalue
                             self.districtTxt.text = self.districtvalue
                             self.territoryTxt.text = self.territoryvalue
-                            self.candidateTxt.text = self.candidatevalue
                             self.phoneTxt.text = self.phonevalue
                             
                             self.indicator.stopAnimating()
