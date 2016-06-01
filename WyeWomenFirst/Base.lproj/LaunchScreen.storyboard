@@ -24,6 +24,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash.png" width="1242" height="2148"/>
+        <image name="splash.png" width="1242" height="2208"/>
     </resources>
 </document>

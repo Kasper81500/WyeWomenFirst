@@ -58,23 +58,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate, UIAlertViewDel
         enterData()
     }
     
-    @IBAction func sendForget(sender: AnyObject) {
-        
-        let email = emailText.text!
-        if(!isValidEmail(email))
-        {
-            let alertController = UIAlertController(title: "Warning!", message: "Please Enter Email", preferredStyle: .Alert)
-            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
-            alertController.addAction(OKAction)
-            self.presentViewController(alertController, animated: true, completion:nil)
-            
-            return
-        }
-        else
-        {
-            sendForgetData(email)
-        }
-    }
+   
     
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
@@ -100,9 +84,15 @@ class LoginViewController: UIViewController ,UITextFieldDelegate, UIAlertViewDel
                     // handle the results as JSON, without a bunch of nested if loops
                     let swiftyJsonVar = JSON(value)
                     let results = swiftyJsonVar["ForgotPasswordResult"]
-                    let ans = String(results)
+                    var alertTitle = "Email Sent"
+                    var ans = String(results)
                     
-                    let alertController = UIAlertController(title: "Email Sent", message: " "+ans, preferredStyle: .Alert)
+                    if(ans == "Invalid Email Address."){
+                        alertTitle = "Warning"
+                        ans = "This Email address does not exist in our system, please register";
+                    }
+                    
+                    let alertController = UIAlertController(title: alertTitle, message: ans, preferredStyle: .Alert)
                     let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
                     alertController.addAction(OKAction)
                     self.presentViewController(alertController, animated: true, completion:nil)

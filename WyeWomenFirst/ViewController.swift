@@ -81,6 +81,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             self.presentViewController(viewController, animated: false, completion: nil)
         }else{
             self.imageViewObject.removeFromSuperview()
+            self.showview()
         }
     }
     
@@ -137,8 +138,14 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             
             for var index=0 ; index<videosimageslider.count ; index++
             {
-                if let url = NSURL(string: videosimageslider[index]) {
-                    if let data = NSData(contentsOfURL: url){
+                
+                let strUrl = videosimageslider[index].stringByReplacingOccurrencesOfString("http", withString: "https")
+                
+                if let url = NSURL(string: strUrl) {
+                   
+                    do{
+                        let data = try NSData(contentsOfURL: url, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                        
                         if let imageUrl = UIImage(data: data) {
                             
                             let  myimageview:UIImageView = UIImageView()
@@ -162,8 +169,10 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                             
                             scrollview.contentSize = CGSize(width: scrollviewcontentSize, height: imageheight)
                         }
+                    }catch{
+                        print(error);
                     }
-                }            
+                }
             }
            
             scrollingTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "newStartScrolling", userInfo: nil, repeats: true)
@@ -177,6 +186,9 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     {
         var currentOffset = scrollview.contentOffset
         currentOffset = CGPointMake(currentOffset.x+2, currentOffset.y)
+        
+        print("newStartScrolling(): scroll width:");
+        print(scrollview.contentSize.width);
         
         if(currentOffset.x < scrollview.contentSize.width - 500)
         {
@@ -254,10 +266,10 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         self.tableview.reloadData()
-                        self.showview()
                         self.indicator.stopAnimating()
                         self.indicator.willRemoveSubview(self.indicator)
                         self.checkVerifiedUser()
+                        
                     }
                 }
         }

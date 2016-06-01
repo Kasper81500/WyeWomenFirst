@@ -14,12 +14,13 @@ import Alamofire
 import SwiftyJSON
 import ionicons
 
-class VideosViewController:UITableViewController , UISearchResultsUpdating
+class VideosViewController:UITableViewController, UISearchResultsUpdating
 {
     
     
     var indicator:UIActivityIndicatorView!
-    
+
+    var memberId = [String]()
     var arrRes = [String]()
     var arrDescription = [String]()
     var arrPath = [String]()
@@ -30,13 +31,9 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
     
     var whiteRoundedView : UIView!
     var filteredTableData = [String]()
-    //var resultSearchController = UISearchController()
-    
-    
     
     var membername = [String]()
     var memberimage = [String]()
-   
 
     @IBOutlet var searchview: UISearchBar!
     @IBOutlet var backbtn: UIBarButtonItem!
@@ -47,7 +44,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
     var pageIndex : Int = 1
     var isMoreVideoAvailable : Bool = true;
     var isDownloadingVideo : Bool = false;
-    
+    var selectedIndex : Int = 0
     
     override func viewDidLoad() {
         
@@ -59,17 +56,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         
         backbtn.image = IonIcons.imageWithIcon(ion_navicon_round, iconColor: UIColor.darkGrayColor(), iconSize: 30, imageSize: CGSize(width: 30, height: 30))
         
-//        resultSearchController = UISearchController(searchResultsController: nil)
-//        resultSearchController.searchResultsUpdater = self
-//        resultSearchController.dimsBackgroundDuringPresentation = false
-//        resultSearchController.searchBar.placeholder = "Search here..."
-//        resultSearchController.hidesNavigationBarDuringPresentation = false
-//        
-//        // Place the search bar view to the tableview headerview.
-//        tableview.tableHeaderView = resultSearchController.searchBar
-        
-        
-       progressBarView()
+        progressBarView()
     }
     
     func progressBarView()
@@ -83,6 +70,27 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         indicator.startAnimating()
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedIndex = indexPath.row
+    }
+    
+    func userLinkButtonClicked(sender : AnyObject?){
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let userProfileViewController = storyBoard.instantiateViewControllerWithIdentifier("UserProfileViewController") as! UserProfileViewController
+        let selectedButton = sender as! UIButton
+        userProfileViewController.memberId = memberId[selectedButton.tag]
+        self.navigationController?.pushViewController(userProfileViewController, animated: true)       
+    
+    }
+    
+    func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+        let blue = CGFloat(rgbValue & 0xFF)/256.0
+        return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
@@ -91,17 +99,15 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
         
         if(cell == nil)
         {
-          
-         //   let nib = UINib(nibName: "VideoCell", bundle: nil)
-           // tableview.registerNib(nib, forCellReuseIdentifier: "CellVideo")
-            
             tableview.registerNib(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "CellVideo")
             cell = VideoCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "CellVideo")
             cell = tableview.dequeueReusableCellWithIdentifier("CellVideo") as? VideoCell
-            
-           // cell?.selectionStyle = UITableViewCellSelectionStyle.None;
-            
         }
+        
+        let userLinkBtn = cell!.userlinkbutton
+        userLinkBtn.tag = indexPath.row
+        userLinkBtn.removeTarget(self, action: "userLinkButtonClicked:", forControlEvents: .TouchUpInside)
+        userLinkBtn.addTarget(self, action: "userLinkButtonClicked:", forControlEvents: .TouchUpInside)
         
 //        if (self.resultSearchController.active) {
 //          //  print("result for Search  ")
@@ -143,6 +149,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
             cell!.memberimage.layer.borderColor = UIColor.grayColor().CGColor
             cell!.memberimage.layer.cornerRadius = cell!.memberimage.frame.width / 2
             cell!.memberimage.clipsToBounds = true
+            
         }
         
         if let url = NSURL(string: arrPath[indexPath.row]) {
@@ -185,7 +192,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
             getMoreList();
         }
     }
-
+    
     
     func  updateSearchResultsForSearchController(searchController: UISearchController) {
         
@@ -281,24 +288,14 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
                             let uploadfile = object["UploadFileID"].stringValue
                             let uploaddate =  object["uploadededDate"].stringValue
                             
-                           // let memberid = object["MemberID"].stringValue
+                            let memberid = object["MemberID"].stringValue
                             let videothumb =  object["videoThumb"].stringValue
                             let videofilepath = object["FilePath"].stringValue
                             
-                      //      print("upload file ")
-                         //   print(uploadfile)
-                         //   print("member id ")
-                         //  print(memberid)
-                            
-                            
                             let membername = object["MemberName"].stringValue
-                            
-                            //  print(membername)
-                            
                             let memberimage = object["MemberImage"].stringValue
                             
-                            // print(memberimage)
-                            
+                            self.memberId.append(memberid)
                             self.arrRes.append(heading)
                             self.arrDescription.append(description)
                             self.arrPath.append(videothumb)
@@ -371,6 +368,7 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
                             
                             for (_, object) in videolist {
                                 
+                                let memberid = object["MemberID"].stringValue
                                 let description = object["Description"].stringValue.stringByRemovingPercentEncoding!
                                 let heading =  object["Heading"].stringValue
                                 let uploadfile = object["UploadFileID"].stringValue
@@ -383,6 +381,9 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
                                 
                                 let memberimage = object["MemberImage"].stringValue
                                 
+                                // print(memberimage)
+                                
+                                self.memberId.append(memberid)
                                 self.arrRes.append(heading)
                                 self.arrDescription.append(description)
                                 self.arrPath.append(videothumb)
@@ -419,21 +420,9 @@ class VideosViewController:UITableViewController , UISearchResultsUpdating
             
             let indexPathval = self.tableview.indexPathForSelectedRow!
             
-        //   print("Click on segue ")
-        //   print("++++++++++++++++++++++++++++++++++")
-         //  print(uploadedFile[indexPathval.row])
-        //   print("++++++++++++++++++++++++++++++++++")
-            destination.titlefinalvalue = uploadedFile[indexPathval.row]            
+            destination.titlefinalvalue = uploadedFile[indexPathval.row]
             
         }
-        
     }
-    
-    func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
-    }
-    
+
 }

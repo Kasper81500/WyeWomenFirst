@@ -223,6 +223,32 @@ class RegistrationViewController: UIViewController, UIPickerViewDataSource, UIPi
         indicator.startAnimating()
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        if textField == nameTxt { // Switch focus to other text field
+            surnameTxt.becomeFirstResponder()
+        }else if(textField == surnameTxt){
+            emailTxt.becomeFirstResponder()
+        }else if(textField == emailTxt){
+            passTxt.becomeFirstResponder()
+        }else if(textField == passTxt){
+            confirmpassTxt.becomeFirstResponder()
+        }else if(textField == confirmpassTxt){
+            countryTxt.becomeFirstResponder()
+        }else if(textField == countryTxt){
+            districtTxt.becomeFirstResponder()
+        }else if(textField == districtTxt){
+            cityTxt.becomeFirstResponder()
+        }else if(textField == cityTxt){
+            territoryTxt.becomeFirstResponder()
+        }else if(textField == territoryTxt){
+            phoneTxt.becomeFirstResponder()
+        }else{
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
     @IBAction func registerSendData(sender: AnyObject) {
         enterData()
     }
@@ -254,7 +280,7 @@ class RegistrationViewController: UIViewController, UIPickerViewDataSource, UIPi
         if( email.isEmpty || pass.isEmpty || name.isEmpty || surname.isEmpty || confirmpass.isEmpty || country.isEmpty ||  district.isEmpty || city.isEmpty || phone.isEmpty )
         {
             
-            let alertController = UIAlertController(title: "Registration Process!", message: "Please Enter Values  ", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Registration Process!", message: "Please Fill the blank fields", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
             alertController.addAction(OKAction)
             self.presentViewController(alertController, animated: true, completion:nil)
@@ -268,10 +294,17 @@ class RegistrationViewController: UIViewController, UIPickerViewDataSource, UIPi
             if (value == false)
             {
                 displayMessage("Please Enter valid Email")
+                emailTxt.text = "";
+                emailTxt.becomeFirstResponder()
+                
             }
             else if( pass != confirmpass)
             {
                 displayMessage("Password not matches ")
+                passTxt.text = "";
+                confirmpassTxt.text = "";
+                passTxt.becomeFirstResponder()
+                confirmpassTxt.becomeFirstResponder()
             }
             else
             {
@@ -514,12 +547,12 @@ class RegistrationViewController: UIViewController, UIPickerViewDataSource, UIPi
             print("you have pressed OK button");
             
             
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginView") as UIViewController
-                self.presentViewController(viewController, animated: true, completion: nil)
-                
-                
-            })
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginView") as UIViewController
+//                self.presentViewController(viewController, animated: true, completion: nil)
+//                
+//                
+//            })
             
         }
         alertController.addAction(OKAction)
@@ -649,21 +682,21 @@ class RegistrationViewController: UIViewController, UIPickerViewDataSource, UIPi
         return result
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
-        
-        print(textField)
-        print("call me return ")
-        
-        textField.resignFirstResponder()
-        
-        return true
-    }
+//    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+//        
+//        print(textField)
+//        print("call me return ")
+//        
+//        textField.resignFirstResponder()
+//        
+//        return true
+//    }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        
-        textField.text = ""
-        return  true
-    }
+//    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+//        
+//        textField.text = ""
+//        return  true
+//    }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         nameTxt.resignFirstResponder()

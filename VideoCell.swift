@@ -36,5 +36,6 @@ class VideoCell:UITableViewCell
     @IBOutlet var membername: UILabel!
     @IBOutlet var memberimage: UIImageView!
     
+    @IBOutlet weak var userlinkbutton: UIButton!
         
 }

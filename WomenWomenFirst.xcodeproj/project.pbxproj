@@ -83,10 +83,13 @@
 		AEDE79781C3CEFEE00860637 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDE79681C3CEFEE00860637 /* UIView+WebCacheOperation.m */; };
 		AEDE79861C3D416800860637 /* user.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AEDE79851C3D416800860637 /* user.jpg */; };
 		AEE132D51C33E43B0016CD06 /* googleplus.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE132D21C33E43B0016CD06 /* googleplus.png */; };
+		F6255AA01CDC1BFE00B8017F /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6255A9F1CDC1BFE00B8017F /* UserProfileViewController.swift */; };
+		F6255AA21CDC1C0900B8017F /* UserVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6255AA11CDC1C0900B8017F /* UserVideoViewController.swift */; };
 		F6540F731CB6E5BA00D3C899 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F6540F721CB6E5BA00D3C899 /* Podfile */; };
 		F6540F7A1CB6E9F400D3C899 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = F6540F791CB6E9F400D3C899 /* facebook.png */; };
 		F69357151CBCFEF2008956B1 /* youtube.png in Resources */ = {isa = PBXBuildFile; fileRef = F69357141CBCFEF2008956B1 /* youtube.png */; };
 		F6C01CB01CBAD15A0092C3D8 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = F6C01CAF1CBAD15A0092C3D8 /* splash.png */; };
+		F6D579451CFD8DDD00286254 /* CommentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D579441CFD8DDD00286254 /* CommentListViewController.swift */; };
 		F6F6DC251CBC2A7100C2CB46 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6DC241CBC2A7100C2CB46 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -235,10 +238,13 @@
 		AEDE79681C3CEFEE00860637 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		AEDE79851C3D416800860637 /* user.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = user.jpg; sourceTree = "<group>"; };
 		AEE132D21C33E43B0016CD06 /* googleplus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = googleplus.png; sourceTree = "<group>"; };
+		F6255A9F1CDC1BFE00B8017F /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		F6255AA11CDC1C0900B8017F /* UserVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVideoViewController.swift; sourceTree = "<group>"; };
 		F6540F721CB6E5BA00D3C899 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F6540F791CB6E9F400D3C899 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		F69357141CBCFEF2008956B1 /* youtube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube.png; sourceTree = "<group>"; };
 		F6C01CAF1CBAD15A0092C3D8 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		F6D579441CFD8DDD00286254 /* CommentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListViewController.swift; sourceTree = "<group>"; };
 		F6F6DC241CBC2A7100C2CB46 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -403,11 +409,14 @@
 				AE617E051C08797700206A49 /* VideoListView.swift */,
 				AE7D62581C0DA56E00CA82F4 /* CommentController.swift */,
 				AE617E071C08804F00206A49 /* LeftDrawerController.swift */,
+				F6255A9F1CDC1BFE00B8017F /* UserProfileViewController.swift */,
+				F6255AA11CDC1C0900B8017F /* UserVideoViewController.swift */,
 				AEC8C9AB1C08632200927871 /* CustomTableView.swift */,
 				AE617E0C1C0894F700206A49 /* VideosViewController.swift */,
 				AE7D62561C0D835900CA82F4 /* VideoDetailListCell.swift */,
 				AEB0DFD61C10450100CD63A0 /* RssFeed.swift */,
 				AE9B9A9B1C16B46100A5004C /* CommentVideoCell.swift */,
+				F6D579441CFD8DDD00286254 /* CommentListViewController.swift */,
 				AEC8C93D1C08359800927871 /* Main.storyboard */,
 				AE8534E31C29504D0062A737 /* Editprofile.swift */,
 				AEC8C9401C08359800927871 /* Assets.xcassets */,
@@ -486,8 +495,8 @@
 			buildConfigurationList = AEC8C95E1C08359800927871 /* Build configuration list for PBXNativeTarget "WomenWomenFirst" */;
 			buildPhases = (
 				62DB655E5582F100E3802F2D /* Check Pods Manifest.lock */,
-				AEC8C9321C08359800927871 /* Sources */,
 				AEC8C9331C08359800927871 /* Frameworks */,
+				AEC8C9321C08359800927871 /* Sources */,
 				AEC8C9341C08359800927871 /* Resources */,
 				AE9357F21C0C80F80049808A /* Embed Frameworks */,
 				AE8DD7CD1C37A4D300CB0265 /* ShellScript */,
@@ -700,13 +709,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8645541C1161AA00017231 /* NSDate+InternetDateTime.m in Sources */,
+				F6255AA01CDC1BFE00B8017F /* UserProfileViewController.swift in Sources */,
 				AEDE79711C3CEFEE00860637 /* SDWebImagePrefetcher.m in Sources */,
 				AEDE79781C3CEFEE00860637 /* UIView+WebCacheOperation.m in Sources */,
 				AEDE79691C3CEFEE00860637 /* MKAnnotationView+WebCache.m in Sources */,
 				AE7D62551C0D729C00CA82F4 /* SWRevealViewController.m in Sources */,
 				AE8645561C1161AA00017231 /* NSString+XMLEntities.m in Sources */,
 				AE617E0D1C0894F700206A49 /* VideosViewController.swift in Sources */,
+				F6D579451CFD8DDD00286254 /* CommentListViewController.swift in Sources */,
 				AE8645521C1161AA00017231 /* MWFeedParser.m in Sources */,
+				F6255AA21CDC1C0900B8017F /* UserVideoViewController.swift in Sources */,
 				AEDE79741C3CEFEE00860637 /* UIImage+MultiFormat.m in Sources */,
 				AE8645511C1161AA00017231 /* MWFeedItem.m in Sources */,
 				AE8645501C1161AA00017231 /* MWFeedInfo.m in Sources */,
@@ -820,7 +832,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jack Youngblood (CK2GS4L52T)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jack Youngblood (CK2GS4L52T)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -844,6 +855,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "";
 				PROVISIONING_PROFILE = "07b73a4c-d228-46d9-a96e-b2350686f8b0";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -869,7 +881,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jack Youngblood (CK2GS4L52T)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jack Youngblood (CK2GS4L52T)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -886,6 +897,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_SWIFT_FLAGS = "";
 				PROVISIONING_PROFILE = "07b73a4c-d228-46d9-a96e-b2350686f8b0";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -913,6 +925,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WyeWomenFirstApp;
 				PRODUCT_NAME = WomenWomenFirst;
+				PROVISIONING_PROFILE = "07b73a4c-d228-46d9-a96e-b2350686f8b0";
 				SWIFT_OBJC_BRIDGING_HEADER = "WyeWomenFirst-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -939,6 +952,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WyeWomenFirstApp;
 				PRODUCT_NAME = WomenWomenFirst;
+				PROVISIONING_PROFILE = "07b73a4c-d228-46d9-a96e-b2350686f8b0";
 				SWIFT_OBJC_BRIDGING_HEADER = "WyeWomenFirst-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

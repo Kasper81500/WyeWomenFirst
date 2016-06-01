@@ -14,7 +14,7 @@ import FBSDKLoginKit
 import Fabric
 import TwitterKit
 
-
+import IQKeyboardManagerSwift
 
 
 
@@ -35,6 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
           Fabric.with([Twitter.self])
         }
+        
+        IQKeyboardManager.sharedManager().enable = true
+        
         return true       
     }
     
